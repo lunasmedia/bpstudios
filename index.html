@@ -240,6 +240,8 @@
       padding: 0;
     }
     .nav-links a {
+      display: inline-block;
+      text-align: center;
       position: relative;
       font-size: 14px;
       letter-spacing: 0.06em;
@@ -479,7 +481,7 @@
     .brand img { transition: height .35s, transform .4s var(--ease), filter .4s; }
     .brand:hover img { transform: translateY(-2px); filter: drop-shadow(0 0 10px rgba(255, 196, 140, .45)); }
 
-    .hero-visual { display: flex; flex-direction: column; align-items: center; }
+    .hero-visual { display: flex; flex-direction: column; align-items: center; width: 100%; }
     .hero-badge {
       position: relative;
       margin-top: 30px;
@@ -1078,6 +1080,7 @@
       }
       .nav-links.open { transform: none; visibility: visible; }
       .nav-links a {
+        text-align: left;
         font-family: var(--serif);
         font-size: 36px;
         letter-spacing: 0;
@@ -1098,7 +1101,7 @@
       .hero-grid, .about-grid, .contact-grid, .faq-grid, .section-head { grid-template-columns: 1fr; }
       .hero-grid { gap: 56px; }
       .hero-visual { order: -1; max-width: 640px; }
-      .hero-visual { margin-inline: auto; }
+      .hero-visual { margin-inline: auto; width: 100%; }
       .hero-badge { margin-top: 22px; }
       .scroll-cue { display: none; }
       .section-head { gap: 20px; }
@@ -1911,26 +1914,78 @@
 
     let lang = "fr";
 
-    function setLang(next) {
-      lang = next === "en" ? "en" : "fr";
-      const dict = lang === "en" ? EN : FR;
+    // Swap every translatable string in the page (no side effects)
+    function applyText(code) {
+      const dict = code === "en" ? EN : FR;
       const t = key => dict[key] ?? FR[key];
-
-      document.documentElement.lang = lang;
-      document.title = MSG[lang].title;
       document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
       document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
       document.querySelectorAll("[data-i18n-placeholder]").forEach(el => { el.placeholder = t(el.dataset.i18nPlaceholder); });
       document.querySelectorAll("[data-i18n-alt]").forEach(el => { el.alt = t(el.dataset.i18nAlt); });
       document.querySelectorAll("[data-i18n-aria]").forEach(el => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
-      document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
-
-      store.set("bp-lang", lang);
-      buildTicker();
     }
 
+    // Pick something on screen to hold still while the text changes
+    function scrollAnchor() {
+      const headerH = document.getElementById("header").offsetHeight;
+      const candidates = document.querySelectorAll("main h1, main h2, main h3, main p, main summary, main label, main .btn, main img, main li, .site-footer h4");
+      for (const el of candidates) {
+        const r = el.getBoundingClientRect();
+        if (r.height && r.top >= headerH && r.top < window.innerHeight) return { el, top: r.top };
+      }
+      return null;
+    }
+
+    function setLang(next, opts = {}) {
+      lang = next === "en" ? "en" : "fr";
+      const anchor = opts.keepScroll && window.scrollY > 0 ? scrollAnchor() : null;
+      const root = document.documentElement;
+      if (anchor) root.style.overflowAnchor = "none"; // we handle it ourselves, the same way in every browser
+
+      root.lang = lang;
+      document.title = MSG[lang].title;
+      applyText(lang);
+      document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+
+      if (anchor) {
+        const shift = anchor.el.getBoundingClientRect().top - anchor.top;
+        if (Math.abs(shift) >= 1) window.scrollTo({ top: window.scrollY + shift, behavior: "instant" });
+        root.style.overflowAnchor = "";
+      }
+      store.set("bp-lang", lang);
+    }
+
+    // Reserve space for the longer language on every translated element:
+    // buttons and nav links keep their widest width, text blocks keep their tallest height.
+    // Switching language then changes the words without reflowing the page.
+    const STABLE_W = ".nav-links a, .nav-cta, .btn, .space-link, .lang-switch, .tags li, .hero-meta > span";
+    function blockOf(el) {
+      let n = el;
+      while (n && n !== document.body && getComputedStyle(n).display.startsWith("inline")) n = n.parentElement;
+      return n;
+    }
+    function lockLayout() {
+      const wEls = [...document.querySelectorAll(STABLE_W)];
+      const hEls = [...new Set([...document.querySelectorAll("[data-i18n], [data-i18n-html]")]
+        .filter(el => !el.closest("header, .ticker, option, title"))
+        .map(blockOf))].filter(Boolean);
+      wEls.forEach(el => { el.style.minWidth = ""; });
+      hEls.forEach(el => { el.style.minHeight = ""; });
+      const W = wEls.map(() => 0), H = hEls.map(() => 0);
+      ["fr", "en"].forEach(code => {
+        applyText(code);
+        wEls.forEach((el, i) => { W[i] = Math.max(W[i], el.getBoundingClientRect().width); });
+        hEls.forEach((el, i) => { H[i] = Math.max(H[i], el.getBoundingClientRect().height); });
+      });
+      applyText(lang);
+      wEls.forEach((el, i) => { if (W[i]) el.style.minWidth = Math.ceil(W[i]) + "px"; });
+      hEls.forEach((el, i) => { if (H[i]) el.style.minHeight = Math.ceil(H[i]) + "px"; });
+    }
+    // FAQ answers have no size while closed, so measure them when they open
+    document.querySelectorAll(".faq details").forEach(d => d.addEventListener("toggle", () => { if (d.open) lockLayout(); }));
+
     document.querySelectorAll(".lang-switch button").forEach(btn => {
-      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+      btn.addEventListener("click", () => { if (btn.dataset.lang !== lang) setLang(btn.dataset.lang, { keepScroll: true }); });
     });
 
     /* ---------------- TICKER (seamless loop) ---------------- */
@@ -1939,7 +1994,8 @@
     function buildTicker() {
       track.querySelectorAll(".ticker-group.clone").forEach(n => n.remove());
       // Fill at least two screen widths, then duplicate the whole set once for a -50% loop
-      const reps = Math.max(1, Math.ceil((window.innerWidth * 1.2) / Math.max(group.scrollWidth, 1)));
+      // Measured on the longer language so the loop stays full after switching
+      const reps = Math.max(1, Math.ceil((window.innerWidth * 1.5) / Math.max(group.scrollWidth, 1)));
       const set = [];
       for (let i = 1; i < reps; i++) set.push(group.cloneNode(true));
       set.forEach(n => { n.classList.add("clone"); n.removeAttribute("id"); track.appendChild(n); });
@@ -2164,9 +2220,21 @@
     const saved = store.get("bp-lang");
     const browser = (navigator.language || "fr").toLowerCase().startsWith("fr") ? "fr" : null;
     setLang(urlLang || saved || browser || "fr");
+    buildTicker();
+    lockLayout();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockLayout);
 
-    let resizeTimer;
-    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(buildTicker, 200); });
+    // Only rebuild when the width really changes (mobile address bars fire resize on scroll)
+    let resizeTimer, lastW = window.innerWidth;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth === lastW) return;
+        lastW = window.innerWidth;
+        buildTicker();
+        lockLayout();
+      }, 200);
+    });
   })();
   </script>
 
