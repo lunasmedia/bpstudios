@@ -29,8 +29,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
   <!-- Hero logo loads first -->
-  <link rel="preload" as="image" href="assets/bp-studios-official-logo.webp"
-    imagesrcset="assets/bp-studios-official-logo-960.webp 960w, assets/bp-studios-official-logo.webp 1536w"
+  <link rel="preload" as="image" href="assets/bp-studios-logo-3d.webp"
+    imagesrcset="assets/bp-studios-logo-3d-700.webp 700w, assets/bp-studios-logo-3d.webp 1150w"
     imagesizes="(max-width: 900px) 92vw, 600px">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
     "@type": "LocalBusiness",
     "name": "BP Studios",
     "description": "Studio spaces for hire for film, TV, photography, music videos and podcasts.",
-    "image": "assets/bp-studios-official-logo.jpg",
+    "image": "assets/og-image.jpg",
     "logo": "assets/bp-studios-logo-full.png",
     "address": {
       "@type": "PostalAddress",
@@ -373,18 +373,13 @@
     .hero-logo {
       width: 100%;
       height: auto;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      border-radius: var(--radius);
-      box-shadow:
-        0 40px 80px -20px rgba(15, 4, 2, 0.75),
-        0 0 0 1px rgba(246, 234, 218, 0.12);
+      filter: drop-shadow(14px 22px 18px rgba(20, 6, 2, 0.55));
     }
 
+    .hero-visual { display: flex; flex-direction: column; align-items: center; }
     .hero-badge {
-      position: absolute;
-      left: -22px;
-      bottom: -22px;
+      position: relative;
+      margin-top: 30px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -1000,7 +995,8 @@
       .hero-grid, .about-grid, .contact-grid, .faq-grid, .section-head { grid-template-columns: 1fr; }
       .hero-grid { gap: 56px; }
       .hero-visual { order: -1; max-width: 640px; }
-      .hero-badge { left: 14px; bottom: -18px; }
+      .hero-visual { margin-inline: auto; }
+      .hero-badge { margin-top: 22px; }
       .scroll-cue { display: none; }
       .section-head { gap: 20px; }
       .prod-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1076,7 +1072,7 @@
     <nav class="container nav" aria-label="Navigation principale" data-i18n-aria="navLabel">
 
       <a href="#home" class="brand" aria-label="BP Studios — accueil">
-        <img src="assets/bp-studios-logo.png" width="520" height="365" alt="BP Studios">
+        <img src="assets/bp-studios-logo.webp" width="280" height="199" alt="BP Studios">
       </a>
 
       <ul class="nav-links" id="navLinks">
@@ -1145,11 +1141,11 @@
         <div class="hero-visual reveal" style="--d:.12s">
           <picture>
             <source type="image/webp"
-              srcset="assets/bp-studios-official-logo-960.webp 960w, assets/bp-studios-official-logo.webp 1536w"
+              srcset="assets/bp-studios-logo-3d-700.webp 700w, assets/bp-studios-logo-3d.webp 1150w"
               sizes="(max-width: 900px) 92vw, 600px">
             <img class="hero-logo"
-              src="assets/bp-studios-official-logo.jpg"
-              width="1536" height="1024"
+              src="assets/bp-studios-logo-full.png"
+              width="1150" height="763"
               alt="Logo officiel BP Studios — Studio spaces for hire"
               data-i18n-alt="hero.logoAlt"
               fetchpriority="high">
@@ -1348,8 +1344,8 @@
       <div class="container about-grid">
 
         <div class="about-logo-wrap reveal">
-          <img class="about-logo" src="assets/bp-studios-logo-full.png"
-            width="900" height="571" loading="lazy"
+          <img class="about-logo" src="assets/bp-studios-logo-3d-700.webp"
+            width="700" height="464" loading="lazy"
             alt="BP Studios — Studio spaces for hire">
         </div>
 
@@ -1602,7 +1598,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#home" aria-label="BP Studios">
-            <img class="footer-logo" src="assets/bp-studios-logo-full.png" width="900" height="571" loading="lazy" alt="BP Studios — Studio spaces for hire">
+            <img class="footer-logo" src="assets/bp-studios-logo-3d-700.webp" width="700" height="464" loading="lazy" alt="BP Studios — Studio spaces for hire">
           </a>
         </div>
         <div>

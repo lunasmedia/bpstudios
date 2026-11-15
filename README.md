@@ -22,9 +22,9 @@ Also review the four space descriptions (Studio A–C and the dressing rooms) an
 
 | File | Use |
 |---|---|
-| `bp-studios-official-logo.webp/.jpg` (+ `-960.webp`) | Official logo photo — hero image |
-| `bp-studios-logo.png` | Transparent cream wordmark (BP + STUDIOS) — header |
-| `bp-studios-logo-full.png` | Transparent full lockup with tagline — About & footer |
+| `bp-studios-logo-full.png` | Master 3D cream logo, transparent, high-res (for print / other uses) |
+| `bp-studios-logo-3d.webp`, `-700.webp` | Same logo for the web — hero, About & footer |
+| `bp-studios-logo.webp` | Compact version without the tagline — header |
 | `favicon.ico`, `icon-512.png`, `apple-touch-icon.png` | Browser / phone icons |
 | `og-image.jpg` | Social sharing preview |
 | `terracotta-texture.webp` | Background texture |
