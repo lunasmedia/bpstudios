@@ -385,7 +385,7 @@
       --lx: 50%;
       position: relative;
       width: 100%;
-      aspect-ratio: 1150 / 763;
+      aspect-ratio: 1148 / 758;
       transform-style: preserve-3d;
       transform: rotateX(var(--rx)) rotateY(var(--ry));
       transition: transform .6s var(--ease);
@@ -396,38 +396,27 @@
       position: absolute;
       height: auto;
       max-width: none;
-      filter: drop-shadow(var(--sx) var(--sy) 16px rgba(20, 6, 2, .5));
+      filter: drop-shadow(calc(var(--sx) * .5) calc(var(--sy) * .5) 12px rgba(20, 6, 2, .28));
       transition: filter .6s var(--ease);
       will-change: transform, opacity;
     }
     .logo-3d.tracking .logo-layer { transition: filter .12s linear; }
 
-    .ll-roof    { left: 32.957%; top: 0.786%;  width: 59.391%; transform: translateZ(60px); }
-    .ll-glow    { position: absolute; inset: 0; transform: translateZ(45px); pointer-events: none; }
-    .ll-glow i {
-      position: absolute;
-      width: 15%;
-      aspect-ratio: 1 / 1.3;
-      transform: translate(-50%, -8%);
-      border-radius: 50%;
-      background:
-        radial-gradient(ellipse 26% 10% at 50% 4%, rgba(255, 246, 220, 1), rgba(255, 220, 160, .5) 60%, transparent 100%),
-        radial-gradient(ellipse 48% 58% at 50% 26%, rgba(255, 196, 120, .85), rgba(255, 168, 86, .38) 45%, rgba(255, 150, 70, .1) 70%, transparent 82%);
-      filter: blur(2px);
-    }
-    .ll-bp      { left: 17.913%; top: 21.625%; width: 59.565%; transform: translateZ(35px); }
-    .ll-studios { left: 8.609%;  top: 76.671%; width: 81.826%; transform: translateZ(20px); }
-    .ll-tagline { left: 0.435%;  top: 94.102%; width: 99.13%;  transform: translateZ(10px); }
+    .ll-roof    { left: 32.753%; top: 1.319%;  width: 58.537%; transform: translateZ(60px); }
+    .ll-glow    { left: 46.777%; top: 8.839%;  width: 39.721%; transform: translateZ(45px); filter: none; }
+    .ll-bp      { left: 18.99%;  top: 17.546%; width: 62.021%; transform: translateZ(35px); }
+    .ll-studios { left: 10.105%; top: 72.032%; width: 79.878%; transform: translateZ(20px); }
+    .ll-tagline { left: 0.784%;  top: 87.071%; width: 99.216%; transform: translateZ(10px); }
 
     /* Light sweep that runs across the BP letters */
     .logo-sheen {
       position: absolute;
-      left: 17.913%; top: 21.625%; width: 59.565%;
-      aspect-ratio: 685 / 404;
+      left: 18.99%; top: 17.546%; width: 62.021%;
+      aspect-ratio: 712 / 435;
       transform: translateZ(36px);
       pointer-events: none;
-      -webkit-mask: url("assets/logo/bp.webp") center / 100% 100% no-repeat;
-              mask: url("assets/logo/bp.webp") center / 100% 100% no-repeat;
+      -webkit-mask: url("assets/logo/bp-mask.webp") center / 100% 100% no-repeat;
+              mask: url("assets/logo/bp-mask.webp") center / 100% 100% no-repeat;
       background: linear-gradient(105deg, transparent 35%, rgba(255, 250, 240, .75) 50%, transparent 65%) no-repeat;
       background-size: 250% 100%;
       background-position: 150% 0;
@@ -435,7 +424,7 @@
     }
 
     /* Intro sequence (only once the layers have loaded) */
-    .js .logo-3d:not(.ready) .logo-layer, .js .logo-3d:not(.ready) .ll-glow { opacity: 0; }
+    .js .logo-3d:not(.ready) .logo-layer { opacity: 0; }
 
     .logo-3d.ready .ll-roof    { animation: roofDraw 1.3s var(--ease) .1s both; }
     .logo-3d.ready .ll-bp      { animation: riseIn 1.1s var(--ease) .35s both; }
@@ -1151,7 +1140,7 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .js .reveal { opacity: 1; transform: none; }
-      .js .logo-3d:not(.ready) .logo-layer, .js .logo-3d:not(.ready) .ll-glow { opacity: 1; }
+      .js .logo-3d:not(.ready) .logo-layer { opacity: 1; }
       .logo-sheen { display: none; }
     }
   </style>
@@ -1188,7 +1177,7 @@
     <nav class="container nav" aria-label="Navigation principale" data-i18n-aria="navLabel">
 
       <a href="#home" class="brand" aria-label="BP Studios — accueil">
-        <img src="assets/bp-studios-logo.webp" width="280" height="199" alt="BP Studios">
+        <img src="assets/bp-studios-logo.webp" width="280" height="203" alt="BP Studios">
       </a>
 
       <ul class="nav-links" id="navLinks">
@@ -1259,11 +1248,11 @@
             <div class="logo-3d" id="logo3d" role="img"
               aria-label="Logo officiel BP Studios — Studio spaces for hire"
               data-i18n-aria="hero.logoAlt">
-              <img class="logo-layer ll-roof"    src="assets/logo/roof.webp"    width="683"  height="561" alt="" fetchpriority="high">
-              <span class="ll-glow" aria-hidden="true"><i style="left:56.9%;top:12.9%"></i><i style="left:77.6%;top:9.7%"></i></span>
-              <img class="logo-layer ll-bp"      src="assets/logo/bp.webp"      width="685"  height="404" alt="" fetchpriority="high">
-              <img class="logo-layer ll-studios" src="assets/logo/studios.webp" width="941"  height="101" alt="">
-              <img class="logo-layer ll-tagline" src="assets/logo/tagline.webp" width="1140" height="40"  alt="">
+              <img class="logo-layer ll-roof"    src="assets/logo/roof.webp"    width="672"  height="557" alt="" fetchpriority="high">
+              <img class="logo-layer ll-glow"    src="assets/logo/glow.webp"    width="456"  height="238" alt="">
+              <img class="logo-layer ll-bp"      src="assets/logo/bp.webp"      width="712"  height="435" alt="" fetchpriority="high">
+              <img class="logo-layer ll-studios" src="assets/logo/studios.webp" width="917"  height="134" alt="">
+              <img class="logo-layer ll-tagline" src="assets/logo/tagline.webp" width="1139" height="94"  alt="">
               <span class="logo-sheen" aria-hidden="true"></span>
             </div>
           </div>
@@ -1462,7 +1451,7 @@
 
         <div class="about-logo-wrap reveal">
           <img class="about-logo" src="assets/bp-studios-logo-3d-700.webp"
-            width="700" height="464" loading="lazy"
+            width="700" height="462" loading="lazy"
             alt="BP Studios — Studio spaces for hire">
         </div>
 
@@ -1715,7 +1704,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#home" aria-label="BP Studios">
-            <img class="footer-logo" src="assets/bp-studios-logo-3d-700.webp" width="700" height="464" loading="lazy" alt="BP Studios — Studio spaces for hire">
+            <img class="footer-logo" src="assets/bp-studios-logo-3d-700.webp" width="700" height="462" loading="lazy" alt="BP Studios — Studio spaces for hire">
           </a>
         </div>
         <div>
