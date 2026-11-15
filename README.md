@@ -22,9 +22,9 @@ Also review the four space descriptions (Studio A–C and the dressing rooms) an
 
 | File | Use |
 |---|---|
-| `bp-studios-logo-full.png` | Master 3D cream logo, transparent, high-res (for print / other uses) |
+| `bp-studios-logo-full.png` | Master transparent logo (illuminated wall-sign design, wall removed; keeps the 3D edges, shadows and spotlight glow) |
 | `bp-studios-logo-3d.webp`, `-700.webp` | Same logo for the web — hero, About & footer |
-| `logo/*.webp` | The hero logo split into layers (roof, BP, STUDIOS, tagline) for the animated 3D version |
+| `logo/*.webp` | The hero logo split into layers (roof, glow, BP, STUDIOS, tagline) for the animated 3D version; `bp-mask.webp` shapes the light sweep |
 | `bp-studios-logo.webp` | Compact version without the tagline — header |
 | `favicon.ico`, `icon-512.png`, `apple-touch-icon.png` | Browser / phone icons |
 | `og-image.jpg` | Social sharing preview |
