@@ -29,9 +29,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
   <!-- Hero logo loads first -->
-  <link rel="preload" as="image" href="assets/bp-studios-logo-3d.webp"
-    imagesrcset="assets/bp-studios-logo-3d-700.webp 700w, assets/bp-studios-logo-3d.webp 1150w"
-    imagesizes="(max-width: 900px) 92vw, 600px">
+  <link rel="preload" as="image" type="image/webp" href="assets/logo/bp.webp">
+  <link rel="preload" as="image" type="image/webp" href="assets/logo/roof.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -370,11 +369,126 @@
 
     .hero-visual { position: relative; }
 
-    .hero-logo {
+    /* ---------- DYNAMIC 3D LOGO ---------- */
+
+    .logo-stage {
       width: 100%;
-      height: auto;
-      filter: drop-shadow(14px 22px 18px rgba(20, 6, 2, 0.55));
+      perspective: 1100px;
+      touch-action: pan-y;
     }
+
+    .logo-3d {
+      --rx: 0deg;
+      --ry: 0deg;
+      --sx: 14px;
+      --sy: 22px;
+      --lx: 50%;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1150 / 763;
+      transform-style: preserve-3d;
+      transform: rotateX(var(--rx)) rotateY(var(--ry));
+      transition: transform .6s var(--ease);
+    }
+    .logo-3d.tracking { transition: transform .12s linear; }
+
+    .logo-layer {
+      position: absolute;
+      height: auto;
+      max-width: none;
+      filter: drop-shadow(var(--sx) var(--sy) 16px rgba(20, 6, 2, .5));
+      transition: filter .6s var(--ease);
+      will-change: transform, opacity;
+    }
+    .logo-3d.tracking .logo-layer { transition: filter .12s linear; }
+
+    .ll-roof    { left: 32.957%; top: 0.786%;  width: 59.391%; transform: translateZ(60px); }
+    .ll-glow    { position: absolute; inset: 0; transform: translateZ(45px); pointer-events: none; }
+    .ll-glow i {
+      position: absolute;
+      width: 15%;
+      aspect-ratio: 1 / 1.3;
+      transform: translate(-50%, -8%);
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse 26% 10% at 50% 4%, rgba(255, 246, 220, 1), rgba(255, 220, 160, .5) 60%, transparent 100%),
+        radial-gradient(ellipse 48% 58% at 50% 26%, rgba(255, 196, 120, .85), rgba(255, 168, 86, .38) 45%, rgba(255, 150, 70, .1) 70%, transparent 82%);
+      filter: blur(2px);
+    }
+    .ll-bp      { left: 17.913%; top: 21.625%; width: 59.565%; transform: translateZ(35px); }
+    .ll-studios { left: 8.609%;  top: 76.671%; width: 81.826%; transform: translateZ(20px); }
+    .ll-tagline { left: 0.435%;  top: 94.102%; width: 99.13%;  transform: translateZ(10px); }
+
+    /* Light sweep that runs across the BP letters */
+    .logo-sheen {
+      position: absolute;
+      left: 17.913%; top: 21.625%; width: 59.565%;
+      aspect-ratio: 685 / 404;
+      transform: translateZ(36px);
+      pointer-events: none;
+      -webkit-mask: url("assets/logo/bp.webp") center / 100% 100% no-repeat;
+              mask: url("assets/logo/bp.webp") center / 100% 100% no-repeat;
+      background: linear-gradient(105deg, transparent 35%, rgba(255, 250, 240, .75) 50%, transparent 65%) no-repeat;
+      background-size: 250% 100%;
+      background-position: 150% 0;
+      opacity: 0;
+    }
+
+    /* Intro sequence (only once the layers have loaded) */
+    .js .logo-3d:not(.ready) .logo-layer, .js .logo-3d:not(.ready) .ll-glow { opacity: 0; }
+
+    .logo-3d.ready .ll-roof    { animation: roofDraw 1.3s var(--ease) .1s both; }
+    .logo-3d.ready .ll-bp      { animation: riseIn 1.1s var(--ease) .35s both; }
+    .logo-3d.ready .ll-studios { animation: spreadIn 1.1s var(--ease) .75s both; }
+    .logo-3d.ready .ll-tagline { animation: fadeUp .9s var(--ease) 1.1s both; }
+    .logo-3d.ready .ll-glow    { animation: lightsOn 1.1s steps(1, end) 1.35s both, breathe 4.5s ease-in-out 2.6s infinite; }
+    .logo-3d.ready .logo-sheen { animation: sheen 7s ease-in-out 2.4s infinite; }
+
+    @keyframes roofDraw {
+      from { clip-path: inset(0 100% 0 0); opacity: 1; }
+      to   { clip-path: inset(0 0 0 0); opacity: 1; }
+    }
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateZ(35px) translateY(14%); }
+      to   { opacity: 1; transform: translateZ(35px) translateY(0); }
+    }
+    @keyframes spreadIn {
+      from { opacity: 0; transform: translateZ(20px) scaleX(.82); }
+      to   { opacity: 1; transform: translateZ(20px) scaleX(1); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateZ(10px) translateY(60%); }
+      to   { opacity: 1; transform: translateZ(10px) translateY(0); }
+    }
+    @keyframes lightsOn {
+      0%   { opacity: 0; }
+      12%  { opacity: .9; }
+      20%  { opacity: .1; }
+      34%  { opacity: 1; }
+      44%  { opacity: .3; }
+      58%, 100% { opacity: 1; }
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: .72; }
+    }
+    @keyframes sheen {
+      0%, 8%   { opacity: 1; background-position: 150% 0; }
+      30%      { opacity: 1; background-position: -60% 0; }
+      31%, 100% { opacity: 0; background-position: -60% 0; }
+    }
+    /* Gentle float on touch screens where there is no pointer to follow */
+    @media (hover: none) {
+      .logo-3d.ready { animation: float 7s ease-in-out 2.4s infinite; }
+    }
+    @keyframes float {
+      0%, 100% { transform: rotateX(0deg) rotateY(-5deg) translateY(0); }
+      50%      { transform: rotateX(3deg) rotateY(5deg) translateY(-6px); }
+    }
+
+    /* Header logo hover */
+    .brand img { transition: height .35s, transform .4s var(--ease), filter .4s; }
+    .brand:hover img { transform: translateY(-2px); filter: drop-shadow(0 0 10px rgba(255, 196, 140, .45)); }
 
     .hero-visual { display: flex; flex-direction: column; align-items: center; }
     .hero-badge {
@@ -1037,6 +1151,8 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .js .reveal { opacity: 1; transform: none; }
+      .js .logo-3d:not(.ready) .logo-layer, .js .logo-3d:not(.ready) .ll-glow { opacity: 1; }
+      .logo-sheen { display: none; }
     }
   </style>
 </head>
@@ -1139,17 +1255,18 @@
         </div>
 
         <div class="hero-visual reveal" style="--d:.12s">
-          <picture>
-            <source type="image/webp"
-              srcset="assets/bp-studios-logo-3d-700.webp 700w, assets/bp-studios-logo-3d.webp 1150w"
-              sizes="(max-width: 900px) 92vw, 600px">
-            <img class="hero-logo"
-              src="assets/bp-studios-logo-full.png"
-              width="1150" height="763"
-              alt="Logo officiel BP Studios — Studio spaces for hire"
-              data-i18n-alt="hero.logoAlt"
-              fetchpriority="high">
-          </picture>
+          <div class="logo-stage" id="logoStage">
+            <div class="logo-3d" id="logo3d" role="img"
+              aria-label="Logo officiel BP Studios — Studio spaces for hire"
+              data-i18n-aria="hero.logoAlt">
+              <img class="logo-layer ll-roof"    src="assets/logo/roof.webp"    width="683"  height="561" alt="" fetchpriority="high">
+              <span class="ll-glow" aria-hidden="true"><i style="left:56.9%;top:12.9%"></i><i style="left:77.6%;top:9.7%"></i></span>
+              <img class="logo-layer ll-bp"      src="assets/logo/bp.webp"      width="685"  height="404" alt="" fetchpriority="high">
+              <img class="logo-layer ll-studios" src="assets/logo/studios.webp" width="941"  height="101" alt="">
+              <img class="logo-layer ll-tagline" src="assets/logo/tagline.webp" width="1140" height="40"  alt="">
+              <span class="logo-sheen" aria-hidden="true"></span>
+            </div>
+          </div>
           <div class="hero-badge" aria-hidden="true">
             <span class="dot"></span>
             <span data-i18n="hero.badge">Plateaux disponibles</span>
@@ -2007,6 +2124,51 @@
         setStatus(m.emailOpen, "success");
       }
     });
+
+    /* ---------------- DYNAMIC LOGO ---------------- */
+    (function () {
+      const logo = document.getElementById("logo3d");
+      const stage = document.getElementById("logoStage");
+      if (!logo) return;
+      const layers = [...logo.querySelectorAll(".logo-layer")];
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Start the intro once every layer has loaded, so pieces never pop in separately
+      Promise.all(layers.map(img => img.complete ? Promise.resolve() :
+        new Promise(res => { img.addEventListener("load", res, { once: true }); img.addEventListener("error", res, { once: true }); })))
+        .then(() => requestAnimationFrame(() => logo.classList.add("ready")));
+      setTimeout(() => logo.classList.add("ready"), 4000); // safety net on slow connections
+
+      if (reduced || !window.matchMedia("(hover: hover)").matches) return;
+
+      // 3D tilt that follows the pointer across the hero
+      const hero = document.getElementById("home");
+      let frame = null, tx = 0, ty = 0;
+      const MAX = 9;
+
+      function apply() {
+        frame = null;
+        logo.style.setProperty("--ry", (tx * MAX).toFixed(2) + "deg");
+        logo.style.setProperty("--rx", (-ty * MAX * 0.7).toFixed(2) + "deg");
+        // Shadow falls away from the light, like a sign lit from the front-left
+        logo.style.setProperty("--sx", (14 - tx * 18).toFixed(1) + "px");
+        logo.style.setProperty("--sy", (22 - ty * 14).toFixed(1) + "px");
+      }
+
+      hero.addEventListener("pointermove", e => {
+        const r = stage.getBoundingClientRect();
+        tx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 0.9)));
+        ty = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 1.2)));
+        logo.classList.add("tracking");
+        if (!frame) frame = requestAnimationFrame(apply);
+      });
+
+      hero.addEventListener("pointerleave", () => {
+        tx = ty = 0;
+        logo.classList.remove("tracking");
+        if (!frame) frame = requestAnimationFrame(apply);
+      });
+    })();
 
     /* ---------------- INITIAL LANGUAGE ---------------- */
     const urlLang = new URLSearchParams(location.search).get("lang");
