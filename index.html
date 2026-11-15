@@ -2306,7 +2306,7 @@
     // or change "carousel" to "grid" below to switch back for everyone.
     const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "carousel";
     (function () {
-      if (SPACES_LAYOUT !== "carousel") return;
+      if (SPACES_LAYOUT !== "grid") return;
       const section = document.getElementById("spaces");
       const track = document.getElementById("spaceGrid");
       const cards = [...track.querySelectorAll(".space-card")];
