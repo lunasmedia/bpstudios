@@ -762,57 +762,65 @@
     }
     .spaces.is-carousel .space-grid::-webkit-scrollbar { display: none; }
 
+    /* Each room sits directly on the section: no box, no border, edges fade into the page */
     .spaces.is-carousel .space-card {
       flex: 0 0 100%;
       scroll-snap-align: start;
       scroll-snap-stop: always;
       min-height: 560px;
       padding: 48px 52px 52px calc(56% + 52px);
+      border: 0;
+      border-radius: 0;
     }
-    .spaces.is-carousel .space-card:hover { transform: none; }
-    /* Photo dissolves into the text panel: no hard edge */
-    .spaces.is-carousel .space-card::before { background: #1c0b06; }
+    .spaces.is-carousel .space-card:hover { transform: none; border: 0; }
+    .spaces.is-carousel .space-card::before { background: none; }
     .spaces.is-carousel .space-photo {
       width: 72%;
       height: 100%;
       object-position: center;
-      -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 42%, rgba(0, 0, 0, .75) 58%, rgba(0, 0, 0, .3) 74%, transparent 100%);
-              mask-image: linear-gradient(90deg, #000 0%, #000 42%, rgba(0, 0, 0, .75) 58%, rgba(0, 0, 0, .3) 74%, transparent 100%);
+      -webkit-mask-image:
+        linear-gradient(90deg, transparent 0%, #000 6%, #000 42%, rgba(0, 0, 0, .75) 58%, rgba(0, 0, 0, .3) 74%, transparent 100%),
+        linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+      -webkit-mask-composite: source-in;
+              mask-image:
+        linear-gradient(90deg, transparent 0%, #000 6%, #000 42%, rgba(0, 0, 0, .75) 58%, rgba(0, 0, 0, .3) 74%, transparent 100%),
+        linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+              mask-composite: intersect;
     }
+    /* Same colour as the section, so the text area is just the page */
     .spaces.is-carousel .space-card::after {
-      background:
-        linear-gradient(90deg, rgba(28, 11, 6, 0) 0%, rgba(28, 11, 6, 0) 30%, rgba(28, 11, 6, .35) 44%, rgba(28, 11, 6, .75) 56%, rgba(28, 11, 6, .92) 66%, rgba(28, 11, 6, .96) 100%),
-        linear-gradient(180deg, rgba(20, 8, 4, .25) 0%, transparent 20%, transparent 80%, rgba(20, 8, 4, .3) 100%);
+      background: linear-gradient(90deg, rgba(36, 16, 9, 0) 0%, rgba(36, 16, 9, 0) 32%, rgba(36, 16, 9, .4) 44%, rgba(36, 16, 9, .8) 56%, rgba(36, 16, 9, .97) 66%, rgba(36, 16, 9, 1) 100%);
     }
     .spaces.is-carousel .space-letter { font-size: 140px; }
 
     .spaces.is-carousel .space-controls {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 24px;
-      margin-top: 26px;
+      margin-top: 22px;
     }
-    .space-count {
-      font-family: var(--serif);
-      font-size: 22px;
-      min-width: 74px;
-      color: var(--sand);
+
+    /* Dots: the active one stretches into a pill and hands over smoothly while scrolling */
+    .space-dots { display: flex; align-items: center; gap: 6px; }
+    .space-dot {
+      display: grid;
+      place-items: center;
+      height: 32px;
+      padding: 0 3px;
+      border: 0;
+      background: none;
     }
-    .space-count b { color: var(--cream); font-weight: 500; font-size: 30px; }
-    .space-progress {
-      flex: 1;
-      height: 1px;
-      background: var(--line-strong);
-      position: relative;
-      overflow: hidden;
+    .space-dot i {
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgb(246, 234, 218);
+      opacity: .3;
     }
-    .space-progress span {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 25%;
-      background: var(--peach);
-      transition: transform .5s var(--ease), width .5s var(--ease);
-    }
+    .space-dot:hover i { opacity: .7 !important; }
+    .space-dot:focus-visible { outline-offset: 0; border-radius: 999px; }
     .space-arrows { display: flex; gap: 10px; }
     .space-arrow {
       width: 52px;
@@ -830,22 +838,29 @@
     .space-arrow:disabled { opacity: .3; cursor: default; }
 
     @media (max-width: 960px) {
-      .spaces.is-carousel .space-card { padding: 36px 36px 40px calc(52% + 36px); }
+      .spaces.is-carousel .space-card { padding: 36px 32px 40px calc(52% + 32px); }
       .spaces.is-carousel .space-photo { width: 70%; }
       .spaces.is-carousel .space-letter { font-size: 110px; }
     }
     @media (max-width: 680px) {
       .spaces.is-carousel .space-grid { gap: 14px; }
-      .spaces.is-carousel .space-card { min-height: 640px; padding: 24px 24px 28px; }
+      .spaces.is-carousel .space-card { min-height: 640px; padding: 24px 4px 28px; }
       .spaces.is-carousel .space-photo {
         width: 100%;
         height: 62%;
-        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0, 0, 0, .7) 65%, rgba(0, 0, 0, .25) 82%, transparent 100%);
-                mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0, 0, 0, .7) 65%, rgba(0, 0, 0, .25) 82%, transparent 100%);
+        -webkit-mask-image:
+          linear-gradient(180deg, transparent 0%, #000 8%, #000 45%, rgba(0, 0, 0, .7) 65%, rgba(0, 0, 0, .25) 82%, transparent 100%),
+          linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+        -webkit-mask-composite: source-in;
+                mask-image:
+          linear-gradient(180deg, transparent 0%, #000 8%, #000 45%, rgba(0, 0, 0, .7) 65%, rgba(0, 0, 0, .25) 82%, transparent 100%),
+          linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+                mask-composite: intersect;
       }
       .spaces.is-carousel .space-card::after {
-        background: linear-gradient(180deg, rgba(28, 11, 6, 0.35) 0%, rgba(28, 11, 6, 0) 14%, rgba(28, 11, 6, 0.15) 26%, rgba(28, 11, 6, 0.6) 38%, rgba(28, 11, 6, 0.9) 50%, rgba(28, 11, 6, 0.96) 100%);
+        background: linear-gradient(180deg, rgba(36, 16, 9, 0) 0%, rgba(36, 16, 9, 0) 26%, rgba(36, 16, 9, .55) 38%, rgba(36, 16, 9, .9) 50%, rgba(36, 16, 9, 1) 100%);
       }
+      .spaces.is-carousel .space-top { padding: 0 20px; }
       .spaces.is-carousel .space-letter { font-size: 90px; }
       .space-controls { gap: 16px; }
       .space-arrow { width: 46px; height: 46px; }
@@ -1579,8 +1594,7 @@
         </div>
 
         <div class="space-controls" aria-hidden="true">
-          <span class="space-count" id="spaceCount"><b>01</b> / 04</span>
-          <span class="space-progress"><span id="spaceProgress"></span></span>
+          <div class="space-dots" id="spaceDots"></div>
           <span class="space-arrows">
             <button type="button" class="space-arrow" id="spacePrev" aria-label="Espace précédent" data-i18n-aria="spaces.prev">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
@@ -2443,8 +2457,7 @@
       const cards = [...track.querySelectorAll(".space-card")].filter(c => !c.hidden);
       const prev = document.getElementById("spacePrev");
       const next = document.getElementById("spaceNext");
-      const count = document.getElementById("spaceCount");
-      const bar = document.getElementById("spaceProgress");
+      const dotsBox = document.getElementById("spaceDots");
 
       section.classList.add("is-carousel");
       section.querySelector(".space-controls").removeAttribute("aria-hidden");
@@ -2458,7 +2471,16 @@
         c.setAttribute("aria-roledescription", "slide");
         c.setAttribute("aria-label", (i + 1) + " / " + cards.length);
       });
-      bar.style.width = (100 / cards.length) + "%";
+      const dots = cards.map((card, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "space-dot";
+        b.setAttribute("aria-label", (i + 1) + " / " + cards.length);
+        b.innerHTML = "<i></i>";
+        b.addEventListener("click", () => goTo(i));
+        dotsBox.appendChild(b);
+        return b.firstChild;
+      });
 
       const step = () => cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
       const current = () => Math.round(track.scrollLeft / step());
@@ -2466,10 +2488,18 @@
         i = Math.max(0, Math.min(cards.length - 1, i));
         track.scrollTo({ left: i * step() });
       }
+      // cream -> peach as a dot becomes active
+      const C0 = [246, 234, 218], C1 = [241, 185, 143];
       function update() {
-        const i = Math.max(0, Math.min(cards.length - 1, current()));
-        count.innerHTML = "<b>" + String(i + 1).padStart(2, "0") + "</b> / " + String(cards.length).padStart(2, "0");
-        bar.style.transform = "translateX(" + (i * 100) + "%)";
+        const pos = track.scrollLeft / step();          // e.g. 1.4 = 40% of the way from slide 2 to 3
+        dots.forEach((d, k) => {
+          const t = Math.max(0, 1 - Math.abs(pos - k)); // 1 when this slide is in view, fades to 0 as it leaves
+          d.style.width = (8 + 26 * t).toFixed(1) + "px";
+          d.style.opacity = (0.3 + 0.7 * t).toFixed(2);
+          d.style.background = "rgb(" + C0.map((c, j) => Math.round(c + (C1[j] - c) * t)).join(",") + ")";
+          d.parentElement.setAttribute("aria-current", t > 0.5 ? "true" : "false");
+        });
+        const i = Math.max(0, Math.min(cards.length - 1, Math.round(pos)));
         prev.disabled = i === 0;
         next.disabled = i === cards.length - 1;
         cards.forEach((c, k) => c.toggleAttribute("inert", k !== i));
