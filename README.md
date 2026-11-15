@@ -42,7 +42,11 @@ The homepage logo is built from the layers in `assets/logo/`. On load, the roof 
 
 ## Our spaces: two layouts
 
-- **Carousel (default):** one space at a time, scrolled sideways with swipe, arrows, trackpad or keyboard.
-- **Grid:** all four spaces in a 2 × 2 grid. Preview it by adding `?spaces=grid` to the address.
+- **Grid (default):** the spaces in a 2-column grid.
+- **Carousel:** one space at a time, scrolled sideways with swipe, arrows, trackpad or keyboard. Preview it with `?spaces=carousel`.
 
-To switch back to the grid for everyone, open `index.html`, find `SPACES_LAYOUT`, and change `"carousel"` to `"grid"`.
+To change the default, open `index.html`, find the line starting `const SPACES_LAYOUT`, and change the last word (`"grid"` or `"carousel"`).
+
+## Turning spaces on and off
+
+In `index.html`, find `SPACES_ON`. Each space is listed with `true` (shown) or `false` (hidden but kept in the code). Hidden spaces also disappear from the booking form, and the letters A, B, C… are reassigned automatically.

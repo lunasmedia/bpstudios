@@ -631,7 +631,7 @@
       z-index: -1;
       /* light at the top so the photo shows, dark at the bottom so the text reads */
       background:
-        linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 18%, rgba(20, 8, 4, 0) 34%, rgba(26, 10, 5, 0.78) 52%, rgba(28, 11, 6, 0.97) 62%);
+        linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 18%, rgba(20, 8, 4, 0.12) 32%, rgba(26, 10, 5, 0.84) 50%, rgba(28, 11, 6, 0.98) 60%);
     }
     .space-photo {
       position: absolute;
@@ -675,7 +675,8 @@
     }
     .space-icon svg { width: 26px; height: 26px; }
 
-    .space-body { margin-top: auto; padding-top: 36px; }
+    .space-body { margin-top: auto; padding-top: 36px; text-shadow: 0 1px 14px rgba(15, 6, 3, .75), 0 0 2px rgba(15, 6, 3, .5); }
+    .space-icon { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background: rgba(27, 11, 6, .5); }
     .space-label {
       font-size: 12px;
       letter-spacing: .28em;
@@ -815,10 +816,10 @@
     }
     @media (max-width: 680px) {
       .spaces.is-carousel .space-grid { gap: 14px; }
-      .spaces.is-carousel .space-card { min-height: 600px; padding: 24px 24px 28px; }
-      .spaces.is-carousel .space-photo { width: 100%; height: 52%; object-position: center 55%; }
+      .spaces.is-carousel .space-card { min-height: 640px; padding: 24px 24px 28px; }
+      .spaces.is-carousel .space-photo { width: 100%; height: 50%; }
       .spaces.is-carousel .space-card::after {
-        background: linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 14%, rgba(20, 8, 4, 0) 26%, rgba(26, 10, 5, 0.8) 41%, rgba(28, 11, 6, 0.97) 51%);
+        background: linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 14%, rgba(20, 8, 4, 0.1) 24%, rgba(26, 10, 5, 0.85) 38%, rgba(28, 11, 6, 0.98) 48%);
       }
       .spaces.is-carousel .space-letter { font-size: 90px; }
       .space-controls { gap: 16px; }
@@ -1229,10 +1230,10 @@
       .hero-lead { font-size: 17px; }
       .hero-buttons .btn { flex: 1 1 100%; }
       .space-grid, .steps, .prod-grid, .form-row, .values { grid-template-columns: 1fr; }
-      .space-card { min-height: 580px; padding: 24px 24px 28px; }
-      .space-photo { height: 52%; }
+      .space-card { min-height: 620px; padding: 24px 24px 28px; }
+      .space-photo { height: 50%; }
       .space-card::after {
-        background: linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 14%, rgba(20, 8, 4, 0) 26%, rgba(26, 10, 5, 0.8) 41%, rgba(28, 11, 6, 0.97) 51%);
+        background: linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 14%, rgba(20, 8, 4, 0.1) 24%, rgba(26, 10, 5, 0.85) 38%, rgba(28, 11, 6, 0.98) 48%);
       }
       .space-letter { font-size: 90px; }
       .space-card h3 { font-size: 34px; }
@@ -1271,6 +1272,8 @@
       <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M8.5 21.5h7"/></symbol>
       <symbol id="i-cyc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4v10a6 6 0 0 0 6 6h12"/><path d="M7 4v9a3 3 0 0 0 3 3h11"/></symbol>
       <symbol id="i-sofa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM6 18v2M18 18v2"/></symbol>
+      <symbol id="i-pot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M2 10h2M20 10h2M9 6c0-1 1-1.5 1-2.5M13 6c0-1 1-1.5 1-2.5"/></symbol>
+      <symbol id="i-brush" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5l6 6-7.5 7.5-6-6z"/><path d="M7 11l-3.2 3.2a2.6 2.6 0 0 0 0 3.7l.3.3a2.6 2.6 0 0 0 3.7 0L11 15"/><path d="M4 20l1.5-1.5"/></symbol>
       <symbol id="i-mirror" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="2"/><path d="M8 21h8M12 16v5M9 7l2-2M9 10l5-5"/></symbol>
       <symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></symbol>
       <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2"/><path d="M8 2.5l4 3.5 4-3.5"/></symbol>
@@ -1403,15 +1406,15 @@
             <h2 class="display section-title reveal" data-i18n-html="spaces.title">Un espace pour<br><em>chaque production.</em></h2>
           </div>
           <p class="section-intro reveal" data-i18n="spaces.intro">
-            BP Studios réunit plusieurs espaces à louer séparément ou ensemble.
-            Dites-nous ce que vous tournez et nous vous proposerons
-            la configuration idéale.
+            Des décors différents, pensés pour les créateurs de contenu, à louer
+            séparément ou ensemble. Dites-nous ce que vous créez et nous vous
+            proposerons l'espace idéal.
           </p>
         </div>
 
         <div class="space-grid" id="spaceGrid">
 
-          <article class="space-card reveal">
+          <article class="space-card reveal" data-space-id="studio-a">
             <img class="space-photo" src="assets/spaces/studio-a.webp?v=20261115-4" alt="Grand plateau de tournage avec canapés jaunes et projecteurs" data-i18n-alt="s1.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">A</span>
@@ -1434,7 +1437,7 @@
             </div>
           </article>
 
-          <article class="space-card reveal" style="--d:.1s">
+          <article class="space-card reveal" data-space-id="studio-b" style="--d:.1s">
             <img class="space-photo" src="assets/spaces/studio-b.webp?v=20261115-4" alt="Décor d'interview avec deux fauteuils, ampoules suspendues et éclairage studio" data-i18n-alt="s2.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">B</span>
@@ -1456,14 +1459,62 @@
             </div>
           </article>
 
-          <article class="space-card reveal">
+          <!-- ===== KITCHEN ===== -->
+          <article class="space-card reveal" data-space-id="kitchen">
+            <img class="space-photo" style="object-position: center 62%" src="assets/spaces/kitchen.webp?v=20261115-5" alt="Cuisine studio lumineuse avec îlot en bois, suspensions dorées, plantes et caméra sur trépied" data-i18n-alt="sk.alt" loading="lazy" decoding="async">
+            <div class="space-top">
+              <span class="space-letter">C</span>
+              <span class="space-icon"><svg aria-hidden="true"><use href="#i-pot"/></svg></span>
+            </div>
+            <div class="space-body">
+              <span class="space-label" data-i18n="sk.label">Studio cuisine</span>
+              <h3 data-i18n="sk.name">La Cuisine</h3>
+              <p data-i18n="sk.desc">Une cuisine lumineuse et entièrement mise en scène, avec îlot central, pour les recettes en vidéo, émissions culinaires, placements de produits et contenus lifestyle.</p>
+              <ul class="tags">
+                <li data-i18n="sk.t1">Recettes</li>
+                <li data-i18n="sk.t2">Émissions culinaires</li>
+                <li data-i18n="sk.t3">Marques alimentaires</li>
+              </ul>
+              <button type="button" class="space-link" data-space="kitchen">
+                <span data-i18n="cta.space">Réserver cet espace</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- ===== BEAUTY ===== -->
+          <article class="space-card reveal" data-space-id="beauty" style="--d:.1s">
+            <img class="space-photo" src="assets/spaces/beauty.webp?v=20261115-5" alt="Studio beauté avec coiffeuse éclairée, pinceaux de maquillage, fleurs roses et caméra" data-i18n-alt="sb.alt" loading="lazy" decoding="async">
+            <div class="space-top">
+              <span class="space-letter">D</span>
+              <span class="space-icon"><svg aria-hidden="true"><use href="#i-brush"/></svg></span>
+            </div>
+            <div class="space-body">
+              <span class="space-label" data-i18n="sb.label">Studio beauté</span>
+              <h3 data-i18n="sb.name">La Suite Beauté</h3>
+              <p data-i18n="sb.desc">Une coiffeuse lumineuse, des rangements dédiés et une lumière flatteuse pour les tutoriels maquillage, soins, coiffure et contenus beauté.</p>
+              <ul class="tags">
+                <li data-i18n="sb.t1">Maquillage</li>
+                <li data-i18n="sb.t2">Soins</li>
+                <li data-i18n="sb.t3">Tutoriels</li>
+              </ul>
+              <button type="button" class="space-link" data-space="beauty">
+                <span data-i18n="cta.space">Réserver cet espace</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Spaces below are switched off in SPACES_ON (script) but kept for later -->
+
+          <article class="space-card reveal" data-space-id="studio-c">
             <img class="space-photo" src="assets/spaces/studio-c.webp?v=20261115-4" alt="Cabine podcast avec canapé vert en velours et bras de micro" data-i18n-alt="s3.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">C</span>
               <span class="space-icon"><svg aria-hidden="true"><use href="#i-mic"/></svg></span>
             </div>
             <div class="space-body">
-              <span class="space-label" data-i18n="s3.label">Studio C</span>
+              <span class="space-label" data-i18n="s3.label">Studio podcast</span>
               <h3 data-i18n="s3.name">La Cabine</h3>
               <p data-i18n="s3.desc">Un espace intime et traité acoustiquement pour les podcasts vidéo, voix off, émissions en ligne et entretiens à deux ou trois personnes.</p>
               <ul class="tags">
@@ -1478,7 +1529,7 @@
             </div>
           </article>
 
-          <article class="space-card reveal" style="--d:.1s">
+          <article class="space-card reveal" data-space-id="green-room" style="--d:.1s">
             <img class="space-photo" src="assets/spaces/green-room.webp?v=20261115-4" alt="Salon en velours bleu avec éclairage studio" data-i18n-alt="s4.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">D</span>
@@ -1748,7 +1799,9 @@
                 <option value="" data-i18n="form.choose">Choisir…</option>
                 <option value="studio-a" data-i18n="opt.a">Studio A — Le Plateau</option>
                 <option value="studio-b" data-i18n="opt.b">Studio B — Le Salon</option>
-                <option value="studio-c" data-i18n="opt.c">Studio C — La Cabine</option>
+                <option value="kitchen" data-i18n="opt.kitchen">La Cuisine</option>
+                <option value="beauty" data-i18n="opt.beauty">La Suite Beauté</option>
+                <option value="studio-c" data-i18n="opt.c">La Cabine (podcast)</option>
                 <option value="green-room" data-i18n="opt.d">Les Loges</option>
                 <option value="multiple" data-i18n="opt.multi">Plusieurs espaces</option>
                 <option value="advice" data-i18n="opt.advice">Je ne sais pas encore — conseillez-moi</option>
@@ -1768,6 +1821,8 @@
                 <option data-i18n="pt.4">Émission TV / Interview</option>
                 <option data-i18n="pt.5">Photographie</option>
                 <option data-i18n="pt.6">Podcast / Live</option>
+                <option data-i18n="pt.9">Contenu culinaire</option>
+                <option data-i18n="pt.10">Beauté / maquillage</option>
                 <option data-i18n="pt.7">Événement privé</option>
                 <option data-i18n="pt.8">Autre</option>
               </select>
@@ -1909,7 +1964,15 @@
       "tk.5": "Photography", "tk.6": "Podcasts", "tk.7": "Interviews", "tk.8": "Digital content",
       "spaces.eyebrow": "Our spaces",
       "spaces.title": "A space for<br><em>every production.</em>",
-      "spaces.intro": "BP Studios brings together several spaces you can hire separately or together. Tell us what you're shooting and we'll suggest the ideal set-up.",
+      "spaces.intro": "Different sets designed for content creators, to hire separately or together. Tell us what you're creating and we'll suggest the ideal space.",
+      "sk.alt": "Bright studio kitchen with a wooden island, brass pendants, plants and a camera on a tripod",
+      "sk.label": "Kitchen studio", "sk.name": "The Kitchen",
+      "sk.desc": "A bright, fully styled kitchen with a central island for recipe videos, cooking shows, food brand content and lifestyle shoots.",
+      "sk.t1": "Recipes", "sk.t2": "Cooking shows", "sk.t3": "Food brands",
+      "sb.alt": "Beauty studio with a lit vanity, make-up brushes, pink flowers and a camera",
+      "sb.label": "Beauty studio", "sb.name": "The Beauty Suite",
+      "sb.desc": "A lit vanity, dedicated storage and flattering light for make-up tutorials, skincare, hair and beauty content.",
+      "sb.t1": "Make-up", "sb.t2": "Skincare", "sb.t3": "Tutorials",
       "s1.alt": "Large film set with yellow sofas and studio lights",
       "s2.alt": "Interview set with two armchairs, hanging bulbs and studio lighting",
       "s3.alt": "Podcast booth with a green velvet sofa and microphone arms",
@@ -1920,7 +1983,7 @@
       "s2.label": "Studio B", "s2.name": "The Lounge",
       "s2.desc": "A warm, modular set ready to dress — ideal for talk shows, interviews, interior scenes and branded content.",
       "s2.t1": "Talk shows", "s2.t2": "Interviews", "s2.t3": "Interior scenes",
-      "s3.label": "Studio C", "s3.name": "The Booth",
+      "s3.label": "Podcast studio", "s3.name": "The Booth",
       "s3.desc": "An intimate, acoustically treated space for video podcasts, voice-overs, online shows and two- or three-person conversations.",
       "s3.t1": "Podcasts", "s3.t2": "Voice-over", "s3.t3": "Live streaming",
       "s4.label": "Green room", "s4.name": "The Dressing Rooms",
@@ -1979,11 +2042,11 @@
       "form.phone": "Phone / WhatsApp",
       "form.space": "Preferred space *",
       "form.choose": "Choose…",
-      "opt.a": "Studio A — The Stage", "opt.b": "Studio B — The Lounge", "opt.c": "Studio C — The Booth",
+      "opt.a": "Studio A — The Stage", "opt.b": "Studio B — The Lounge", "opt.c": "The Booth (podcast)", "opt.kitchen": "The Kitchen", "opt.beauty": "The Beauty Suite",
       "opt.d": "The Dressing Rooms", "opt.multi": "Several spaces", "opt.advice": "Not sure yet — advise me",
       "form.production": "Type of production *",
       "pt.1": "Music video", "pt.2": "Commercial", "pt.3": "Film / Series", "pt.4": "TV show / Interview",
-      "pt.5": "Photography", "pt.6": "Podcast / Live", "pt.7": "Private event", "pt.8": "Other",
+      "pt.5": "Photography", "pt.6": "Podcast / Live", "pt.9": "Food content", "pt.10": "Beauty / make-up", "pt.7": "Private event", "pt.8": "Other",
       "form.duration": "Duration",
       "du.1": "A few hours", "du.2": "Half day", "du.3": "Full day", "du.4": "Several days",
       "form.date": "Preferred date",
@@ -2301,15 +2364,40 @@
       }
     });
 
-    /* ---------------- SPACES LAYOUT: grid (default) or carousel ---------------- */
-    // Carousel is the default. Show the 2x2 grid instead with ?spaces=grid,
-    // or change "carousel" to "grid" below to switch back for everyone.
-    const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "carousel";
+    /* ---------------- WHICH SPACES ARE SHOWN ----------------
+       true  = shown on the site and in the booking form
+       false = hidden (kept in the code, switch back on any time)
+       The order on the page follows the HTML; letters A, B, C… are given automatically. */
+    const SPACES_ON = {
+      "studio-a":   true,   // Le Plateau
+      "studio-b":   true,   // Le Salon
+      "kitchen":    true,   // La Cuisine
+      "beauty":     true,   // La Suite Beauté
+      "studio-c":   false,  // La Cabine (podcast booth)
+      "green-room": false   // Les Loges (dressing rooms)
+    };
     (function () {
-      if (SPACES_LAYOUT !== "grid") return;
+      let n = 0;
+      document.querySelectorAll(".space-card[data-space-id]").forEach(card => {
+        const on = SPACES_ON[card.dataset.spaceId] !== false;
+        card.hidden = !on;
+        if (on) card.querySelector(".space-letter").textContent = String.fromCharCode(65 + n++);
+      });
+      document.querySelectorAll("#space option[value]").forEach(opt => {
+        if (SPACES_ON[opt.value] === false) { opt.hidden = true; opt.disabled = true; }
+      });
+    })();
+
+    /* ---------------- SPACES LAYOUT: grid (default) or carousel ---------------- */
+    // Layout of "Our spaces": "grid" (2x2) or "carousel" (one at a time, scroll sideways).
+    // Change the word at the end of the next line to switch for everyone;
+    // preview the other one with ?spaces=carousel or ?spaces=grid.
+    const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "grid";
+    (function () {
+      if (SPACES_LAYOUT !== "carousel") return;
       const section = document.getElementById("spaces");
       const track = document.getElementById("spaceGrid");
-      const cards = [...track.querySelectorAll(".space-card")];
+      const cards = [...track.querySelectorAll(".space-card")].filter(c => !c.hidden);
       const prev = document.getElementById("spacePrev");
       const next = document.getElementById("spaceNext");
       const count = document.getElementById("spaceCount");
