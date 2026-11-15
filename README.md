@@ -42,7 +42,7 @@ The homepage logo is built from the layers in `assets/logo/`. On load, the roof 
 
 ## Our spaces: two layouts
 
-- **Grid (default):** all four spaces in a 2 × 2 grid.
-- **Carousel:** one space at a time, scrolled sideways with swipe, arrows, trackpad or keyboard. Preview it by adding `?spaces=carousel` to the address, e.g. `https://lunasmedia.github.io/bpstudios/?spaces=carousel`.
+- **Carousel (default):** one space at a time, scrolled sideways with swipe, arrows, trackpad or keyboard.
+- **Grid:** all four spaces in a 2 × 2 grid. Preview it by adding `?spaces=grid` to the address.
 
-To make the carousel the default for everyone, open `index.html`, find `SPACES_LAYOUT`, and change `"grid"` to `"carousel"`.
+To switch back to the grid for everyone, open `index.html`, find `SPACES_LAYOUT`, and change `"carousel"` to `"grid"`.
