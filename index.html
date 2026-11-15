@@ -1,0 +1,1390 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#672b19">
+
+  <meta name="description"
+    content="BP Studios, beautiful creative studio spaces for hire. Photography, filming, content creation, workshops and private experiences.">
+
+  <title>BP Studios | Studio Spaces for Hire</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --terracotta: #A34D2C;
+      --rust: #78351E;
+      --dark: #35170F;
+      --cream: #FFF0DD;
+      --ivory: #FFF8EE;
+      --peach: #E5BEA4;
+      --border: rgba(255,234,209,0.2);
+      --texture: url("assets/terracotta-texture.webp");
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--rust);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    .serif {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+      letter-spacing: -0.045em;
+    }
+
+    .eyebrow {
+      color: #FFD4AD;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .texture {
+      background-color: #78351E;
+      background-image:
+        linear-gradient(
+          115deg,
+          rgba(52,17,8,0.2),
+          rgba(187,91,48,0.12)
+        ),
+        var(--texture);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(43,17,10,0.46);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(43,17,10,0.95);
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #FFCC9D;
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 30px;
+    }
+
+    /* BUTTONS */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 15px 24px;
+      background: #F3D1AC;
+      color: #492112;
+      border: 1px solid #F3D1AC;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #FFF1DC;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: var(--cream);
+    }
+
+    .btn-outline:hover {
+      color: var(--dark);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(48,16,8,0.87),
+        rgba(68,22,9,0.57),
+        rgba(50,15,7,0.18)
+      );
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      align-items: center;
+      gap: 6%;
+    }
+
+    .hero h1 {
+      font-size: clamp(70px, 8vw, 130px);
+      line-height: 0.95;
+      margin: 22px 0 28px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #F3D7C5;
+      max-width: 460px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .hero-logo {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 32px 90px rgba(30,9,4,0.5);
+      transform: perspective(1100px) rotateY(-4deg);
+      transition: transform 0.7s ease;
+    }
+
+    .hero-logo:hover {
+      transform: perspective(1100px) rotateY(0);
+    }
+
+    /* MOVING TEXT */
+
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      background: rgba(40,13,7,0.85);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 60px;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+
+    .ticker-track span {
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* GENERAL SECTIONS */
+
+    section.content-section {
+      padding: 110px 0;
+    }
+
+    .section-title {
+      font-size: clamp(48px, 5vw, 82px);
+      line-height: 1.05;
+      margin: 16px 0 30px;
+    }
+
+    .section-intro {
+      max-width: 580px;
+      line-height: 1.8;
+      color: #F2CDB4;
+      margin-bottom: 45px;
+    }
+
+    /* SERVICES */
+
+    .services {
+      background:
+        linear-gradient(
+          150deg,
+          rgba(58,19,9,0.65),
+          rgba(117,49,27,0.3)
+        ),
+        var(--texture) center / cover;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 330px;
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(
+        145deg,
+        rgba(242,174,118,0.11),
+        rgba(42,14,6,0.34)
+      );
+      border: 1px solid rgba(255,236,217,0.25);
+      transition: 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(
+        145deg,
+        rgba(242,174,118,0.25),
+        rgba(42,14,6,0.4)
+      );
+    }
+
+    .service-number {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #FFD2AC;
+    }
+
+    .service-card h3 {
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .service-card p {
+      color: #F0CDB6;
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .service-arrow {
+      align-self: end;
+      font-size: 25px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: #2F140E;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8%;
+      align-items: center;
+    }
+
+    .about-logo {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: 25px 25px 0 rgba(214,132,84,0.12);
+    }
+
+    .about p {
+      color: #EAC5AE;
+      line-height: 1.9;
+    }
+
+    /* HOW IT WORKS */
+
+    .process {
+      background:
+        linear-gradient(
+          140deg,
+          rgba(91,35,18,0.75),
+          rgba(155,68,34,0.4)
+        ),
+        var(--texture) center / cover;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 45px;
+    }
+
+    .step {
+      border-top: 1px solid #F3C59F;
+      padding-top: 25px;
+    }
+
+    .step-number {
+      font-family: Georgia, serif;
+      font-size: 55px;
+      color: #F6BC90;
+    }
+
+    .step h3 {
+      margin: 20px 0 10px;
+    }
+
+    .step p {
+      color: #EDCBB3;
+      line-height: 1.75;
+    }
+
+    /* FAQ */
+
+    .faq {
+      background: #38180F;
+    }
+
+    .faq details {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .faq details p {
+      color: #E8C4AC;
+      margin-top: 15px;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background:
+        linear-gradient(
+          120deg,
+          rgba(70,23,10,0.7),
+          rgba(129,50,24,0.5)
+        ),
+        var(--texture) center / cover;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 8%;
+    }
+
+    .contact-text p {
+      line-height: 1.9;
+      color: #F4D3BD;
+    }
+
+    .contact-form {
+      padding: 35px;
+      background: rgba(39,13,7,0.6);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(6px);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 15px;
+      color: var(--cream);
+      background: rgba(255,240,224,0.07);
+      border: 1px solid rgba(255,230,207,0.32);
+      outline: none;
+      border-radius: 3px;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: #FFD4AB;
+    }
+
+    .field select option {
+      color: #35170F;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #D5AD93;
+    }
+
+    .form-note {
+      color: #E4BEA4;
+      font-size: 12px;
+      line-height: 1.7;
+      margin-top: 18px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0;
+      background: #21100B;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer small {
+      color: #D5B09A;
+    }
+
+    /* SCROLL REVEAL ANIMATIONS */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-logo {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      nav {
+        height: 68px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 25px;
+        background: #30150E;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding: 120px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+      }
+
+      section.content-section {
+        padding: 75px 0;
+      }
+
+      .service-grid,
+      .steps,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 280px;
+      }
+
+      .contact-form {
+        padding: 20px;
+      }
+
+      .footer-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .ticker-track {
+        animation: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header id="header">
+    <nav class="container">
+
+      <a href="#home" class="brand">
+        BP<span>STUDIOS</span>
+      </a>
+
+      <button class="menu-btn"
+        id="menuButton"
+        aria-label="Toggle navigation"
+        aria-expanded="false">
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#services">Our Spaces</a>
+        <a href="#about">About Us</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQs</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="#contact" class="btn nav-cta">
+        ENQUIRE NOW ↗
+      </a>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOMEPAGE -->
+
+    <section class="hero texture" id="home">
+
+      <div class="container hero-grid">
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            BP STUDIOS · STUDIO SPACES FOR HIRE
+          </div>
+
+          <h1 class="serif">
+            Your space.<br>
+            Your vision.
+          </h1>
+
+          <p>
+            Beautifully considered spaces for ideas,
+            content and experiences. Make room for
+            your next big thing at BP Studios.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="#contact" class="btn">
+              ENQUIRE ABOUT HIRE ↗
+            </a>
+
+            <a href="#services" class="btn btn-outline">
+              EXPLORE OUR SPACES
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="reveal">
+
+          <!-- EXACT ORIGINAL LOGO -->
+
+          <img
+            src="assets/bp-studios-official-logo.png"
+            alt="BP Studios official illuminated terracotta logo"
+            class="hero-logo"
+            fetchpriority="high"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- MOVING SERVICE TEXT -->
+
+    <div class="ticker" aria-hidden="true">
+
+      <div class="ticker-track">
+
+        <span>
+          PHOTOGRAPHY ✦ CONTENT CREATION ✦
+          FILM & VIDEO ✦ WORKSHOPS ✦
+          PRIVATE EXPERIENCES ✦ CREATIVE SPACE ✦
+        </span>
+
+        <span>
+          PHOTOGRAPHY ✦ CONTENT CREATION ✦
+          FILM & VIDEO ✦ WORKSHOPS ✦
+          PRIVATE EXPERIENCES ✦ CREATIVE SPACE ✦
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- SERVICES -->
+
+    <section class="content-section services" id="services">
+
+      <div class="container">
+
+        <div class="eyebrow reveal">
+          EXPLORE THE POSSIBILITIES
+        </div>
+
+        <h2 class="serif section-title reveal">
+          Room for<br>every idea.
+        </h2>
+
+        <p class="section-intro reveal">
+          From personal projects to professional
+          productions, tell us what you're planning
+          and we'll discuss how BP Studios can
+          accommodate your vision.
+        </p>
+
+        <div class="service-grid">
+
+          <article class="service-card reveal">
+            <span class="service-number">01 / CREATE</span>
+
+            <div>
+              <h3>Photography</h3>
+              <p>
+                Enquire about spaces for portraits,
+                fashion photography, product shoots
+                and creative campaigns.
+              </p>
+            </div>
+
+            <span class="service-arrow">↗</span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-number">02 / CAPTURE</span>
+
+            <div>
+              <h3>Video & Filming</h3>
+              <p>
+                Explore studio hire for interviews,
+                promotional videos, filming and
+                digital productions.
+              </p>
+            </div>
+
+            <span class="service-arrow">↗</span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-number">03 / INSPIRE</span>
+
+            <div>
+              <h3>Content Creation</h3>
+              <p>
+                A creative environment for social
+                media content, branding projects,
+                podcasts and digital storytelling.
+              </p>
+            </div>
+
+            <span class="service-arrow">↗</span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-number">04 / CONNECT</span>
+
+            <div>
+              <h3>Workshops</h3>
+              <p>
+                Discuss studio space for creative
+                workshops, learning experiences
+                and small group sessions.
+              </p>
+            </div>
+
+            <span class="service-arrow">↗</span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-number">05 / GATHER</span>
+
+            <div>
+              <h3>Private Experiences</h3>
+              <p>
+                Ask about intimate celebrations,
+                brand showcases, product launches
+                and private gatherings.
+              </p>
+            </div>
+
+            <span class="service-arrow">↗</span>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-number">06 / YOUR VISION</span>
+
+            <div>
+              <h3>Something Else?</h3>
+              <p>
+                Have something different in mind?
+                Share your project and explore
+                the possibilities with us.
+              </p>
+            </div>
+
+            <span class="service-arrow">↗</span>
+          </article>
+
+        </div>
+
+        <p class="form-note">
+          Studio uses, equipment, guest capacity and
+          booking availability are subject to confirmation.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ABOUT US -->
+
+    <section class="content-section about" id="about">
+
+      <div class="container about-grid">
+
+        <div class="reveal">
+
+          <img
+            src="assets/bp-studios-official-logo.png"
+            alt="BP Studios original logo"
+            class="about-logo"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            WELCOME TO BP STUDIOS
+          </div>
+
+          <h2 class="serif section-title">
+            A space to<br>
+            make your own.
+          </h2>
+
+          <p>
+            BP Studios is built around a simple idea:
+            the right environment can make extraordinary
+            things possible.
+          </p>
+
+          <p>
+            We're creating a destination where
+            individuals, brands and communities
+            can bring their plans to life.
+          </p>
+
+          <p>
+            Our vision is to provide an inspiring,
+            welcoming and flexible studio experience,
+            whether you're creating content, planning
+            a production or bringing people together.
+          </p>
+
+          <a href="#contact" class="btn">
+            DISCOVER MORE ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- BOOKING PROCESS -->
+
+    <section class="content-section process" id="how-it-works">
+
+      <div class="container">
+
+        <div class="eyebrow reveal">
+          SIMPLE FROM THE START
+        </div>
+
+        <h2 class="serif section-title reveal">
+          How it works.
+        </h2>
+
+        <div class="steps">
+
+          <div class="step reveal">
+
+            <span class="step-number">01</span>
+
+            <h3>Share Your Idea</h3>
+
+            <p>
+              Tell us what you're planning,
+              your preferred date, approximate
+              group size and requirements.
+            </p>
+
+          </div>
+
+          <div class="step reveal">
+
+            <span class="step-number">02</span>
+
+            <h3>Discuss the Details</h3>
+
+            <p>
+              We'll review your enquiry,
+              confirm suitability and discuss
+              the available booking options.
+            </p>
+
+          </div>
+
+          <div class="step reveal">
+
+            <span class="step-number">03</span>
+
+            <h3>Make It Happen</h3>
+
+            <p>
+              Once your booking is confirmed,
+              prepare to bring your project
+              or event to life at BP Studios.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+
+    <section class="content-section faq" id="faq">
+
+      <div class="container">
+
+        <div class="eyebrow reveal">
+          GOOD TO KNOW
+        </div>
+
+        <h2 class="serif section-title reveal">
+          Frequently asked<br>
+          questions.
+        </h2>
+
+        <div class="reveal">
+
+          <details>
+            <summary>How much does studio hire cost?</summary>
+            <p>
+              Pricing depends on the booking duration
+              and requirements. Contact BP Studios
+              for a tailored quotation.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can I hire the studio for a few hours?</summary>
+            <p>
+              Tell us how long you need the studio,
+              and we'll confirm the available options.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is photography equipment included?</summary>
+            <p>
+              Please specify any equipment requirements
+              in your enquiry so we can confirm
+              what is available.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can I arrange a studio viewing?</summary>
+            <p>
+              You can request a viewing using our
+              booking enquiry form.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can I host private events?</summary>
+            <p>
+              Tell us about your event, expected
+              attendance and preferred date.
+              We'll confirm whether the space
+              is suitable.
+            </p>
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT AND BOOKING -->
+
+    <section class="content-section contact" id="contact">
+
+      <div class="container contact-grid">
+
+        <div class="contact-text reveal">
+
+          <div class="eyebrow">
+            LET'S CREATE SOMETHING
+          </div>
+
+          <h2 class="serif section-title">
+            Have a date<br>
+            in mind?
+          </h2>
+
+          <p>
+            Whether you're planning a photoshoot,
+            content production, workshop or private
+            experience, we'd love to hear your ideas.
+          </p>
+
+          <p>
+            Send us an enquiry and we'll discuss
+            the next steps.
+          </p>
+
+        </div>
+
+        <form class="contact-form reveal" id="enquiryForm">
+
+          <div class="form-row">
+
+            <div class="field">
+              <label for="name">Your Name *</label>
+              <input
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Full name"
+              >
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="you@example.com"
+              >
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="service">
+                What Are You Planning? *
+              </label>
+
+              <select id="service" name="service" required>
+
+                <option value="">Choose a service</option>
+                <option>Photography</option>
+                <option>Video & Filming</option>
+                <option>Content Creation</option>
+                <option>Workshop</option>
+                <option>Private Experience</option>
+                <option>Other</option>
+
+              </select>
+
+            </div>
+
+            <div class="field">
+
+              <label for="date">
+                Preferred Date
+              </label>
+
+              <input id="date" name="date" type="date">
+
+            </div>
+
+          </div>
+
+          <div class="field">
+
+            <label for="guests">
+              Estimated Number of People
+            </label>
+
+            <input
+              id="guests"
+              name="guests"
+              type="number"
+              min="1"
+              placeholder="e.g. 10"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label for="message">
+              Tell Us About Your Project *
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Tell us about your plans, timings and requirements..."></textarea>
+
+          </div>
+
+          <button type="submit" class="btn">
+            PREPARE ENQUIRY ↗
+          </button>
+
+          <p class="form-note" id="formStatus" role="status">
+            This form opens your email application
+            with your enquiry prepared.
+            Your booking is not confirmed until
+            BP Studios responds.
+          </p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-flex">
+
+      <a href="#home" class="brand">
+        BP<span>STUDIOS</span>
+      </a>
+
+      <small>
+        © <span id="year"></span> BP Studios.
+        All rights reserved.
+      </small>
+
+      <a href="#home">
+        Back to top ↑
+      </a>
+
+    </div>
+
+  </footer>
+
+  <!-- INTERACTIVE FEATURES -->
+
+  <script>
+
+    // REPLACE THIS WITH YOUR BUSINESS EMAIL
+
+    const CONFIG = {
+      bookingEmail: "YOUR-EMAIL@example.com"
+    };
+
+    // NAVIGATION
+
+    const header = document.getElementById("header");
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 20);
+    }, { passive: true });
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      menuButton.textContent = isOpen ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+
+      });
+
+    });
+
+    // FOOTER YEAR
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // SCROLL ANIMATIONS
+
+    const observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+
+      });
+
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      observer.observe(element);
+    });
+
+    // BOOKING ENQUIRY
+
+    document.getElementById("enquiryForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const status = document.getElementById("formStatus");
+
+        if (CONFIG.bookingEmail.includes("YOUR-EMAIL")) {
+
+          status.textContent =
+            "Please configure the BP Studios booking email before launching.";
+
+          return;
+        }
+
+        const data = new FormData(this);
+
+        const name = data.get("name");
+        const email = data.get("email");
+        const service = data.get("service");
+        const date = data.get("date") || "Flexible";
+        const guests = data.get("guests") || "Not specified";
+        const message = data.get("message");
+
+        const subject =
+          "BP Studios Enquiry: " + service + " | " + name;
+
+        const body = [
+          "Name: " + name,
+          "Email: " + email,
+          "Service: " + service,
+          "Preferred Date: " + date,
+          "Estimated Guests: " + guests,
+          "",
+          "Project Details:",
+          message
+        ].join("\n");
+
+        const mailto =
+          "mailto:" + CONFIG.bookingEmail +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+
+        window.location.href = mailto;
+
+        status.textContent =
+          "Your email application should open. Please send the email to complete your enquiry.";
+
+      });
+
+  </script>
+
+</body>
+</html>
