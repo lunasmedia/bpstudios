@@ -609,8 +609,8 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      min-height: 400px;
-      padding: 36px;
+      min-height: 600px;
+      padding: 32px 36px 36px;
       border-radius: var(--radius);
       overflow: hidden;
       isolation: isolate;
@@ -621,23 +621,34 @@
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -2;
+      z-index: -3;
       background: var(--texture) center / cover, var(--terracotta);
-      transition: transform 1.2s var(--ease);
     }
     .space-card::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(160deg, rgba(36, 14, 8, 0.35) 0%, rgba(30, 11, 6, 0.88) 70%);
+      /* light at the top so the photo shows, dark at the bottom so the text reads */
+      background:
+        linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 18%, rgba(20, 8, 4, 0) 34%, rgba(26, 10, 5, 0.78) 52%, rgba(28, 11, 6, 0.97) 62%);
     }
-    .space-card:nth-child(2)::after { background: linear-gradient(200deg, rgba(36,14,8,.45), rgba(30,11,6,.9) 70%); }
-    .space-card:nth-child(3)::after { background: linear-gradient(20deg, rgba(36,14,8,.5), rgba(30,11,6,.92) 75%); }
-    .space-card:nth-child(4)::after { background: linear-gradient(130deg, rgba(36,14,8,.4), rgba(30,11,6,.9) 70%); }
+    .space-photo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      width: 100%;
+      height: 62%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center 55%;
+      transform-origin: center 40%;
+      transition: transform 1.2s var(--ease);
+    }
 
     .space-card:hover { transform: translateY(-6px); border-color: var(--line-strong); }
-    .space-card:hover::before { transform: scale(1.06); }
+    .space-card:hover .space-photo { transform: scale(1.06); }
 
     .space-top {
       display: flex;
@@ -649,7 +660,8 @@
       font-family: var(--serif);
       font-size: 120px;
       line-height: .8;
-      color: rgba(246, 234, 218, 0.9);
+      color: rgba(246, 234, 218, 0.95);
+      text-shadow: 0 4px 24px rgba(10, 4, 2, .55);
     }
     .space-icon {
       width: 58px;
@@ -688,6 +700,7 @@
       list-style: none;
     }
     .tags li {
+      text-align: center;
       font-size: 12px;
       letter-spacing: .06em;
       padding: 5px 13px;
@@ -1125,7 +1138,11 @@
       .hero-lead { font-size: 17px; }
       .hero-buttons .btn { flex: 1 1 100%; }
       .space-grid, .steps, .prod-grid, .form-row, .values { grid-template-columns: 1fr; }
-      .space-card { min-height: 360px; padding: 28px; }
+      .space-card { min-height: 580px; padding: 24px 24px 28px; }
+      .space-photo { height: 52%; }
+      .space-card::after {
+        background: linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 14%, rgba(20, 8, 4, 0) 26%, rgba(26, 10, 5, 0.8) 41%, rgba(28, 11, 6, 0.97) 51%);
+      }
       .space-letter { font-size: 90px; }
       .space-card h3 { font-size: 34px; }
       .contact-form { padding: 26px 20px; }
@@ -1304,6 +1321,7 @@
         <div class="space-grid">
 
           <article class="space-card reveal">
+            <img class="space-photo" src="assets/spaces/studio-a.webp?v=20261115-4" alt="Grand plateau de tournage avec canapés jaunes et projecteurs" data-i18n-alt="s1.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">A</span>
               <span class="space-icon"><svg aria-hidden="true"><use href="#i-cyc"/></svg></span>
@@ -1326,6 +1344,7 @@
           </article>
 
           <article class="space-card reveal" style="--d:.1s">
+            <img class="space-photo" src="assets/spaces/studio-b.webp?v=20261115-4" alt="Décor d'interview avec deux fauteuils, ampoules suspendues et éclairage studio" data-i18n-alt="s2.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">B</span>
               <span class="space-icon"><svg aria-hidden="true"><use href="#i-sofa"/></svg></span>
@@ -1347,6 +1366,7 @@
           </article>
 
           <article class="space-card reveal">
+            <img class="space-photo" src="assets/spaces/studio-c.webp?v=20261115-4" alt="Cabine podcast avec canapé vert en velours et bras de micro" data-i18n-alt="s3.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">C</span>
               <span class="space-icon"><svg aria-hidden="true"><use href="#i-mic"/></svg></span>
@@ -1368,6 +1388,7 @@
           </article>
 
           <article class="space-card reveal" style="--d:.1s">
+            <img class="space-photo" src="assets/spaces/green-room.webp?v=20261115-4" alt="Salon en velours bleu avec éclairage studio" data-i18n-alt="s4.alt" loading="lazy" decoding="async">
             <div class="space-top">
               <span class="space-letter">D</span>
               <span class="space-icon"><svg aria-hidden="true"><use href="#i-mirror"/></svg></span>
@@ -1785,6 +1806,10 @@
       "spaces.eyebrow": "Our spaces",
       "spaces.title": "A space for<br><em>every production.</em>",
       "spaces.intro": "BP Studios brings together several spaces you can hire separately or together. Tell us what you're shooting and we'll suggest the ideal set-up.",
+      "s1.alt": "Large film set with yellow sofas and studio lights",
+      "s2.alt": "Interview set with two armchairs, hanging bulbs and studio lighting",
+      "s3.alt": "Podcast booth with a green velvet sofa and microphone arms",
+      "s4.alt": "Blue velvet lounge with studio lighting",
       "s1.label": "Studio A", "s1.name": "The Stage",
       "s1.desc": "Our main stage with a cyclorama wall for music videos, commercials, drama and fashion shoots that need room and controlled light.",
       "s1.t1": "Music videos", "s1.t2": "Commercials", "s1.t3": "Drama", "s1.t4": "Fashion",
