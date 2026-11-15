@@ -54,7 +54,17 @@
   </script>
 
   <!-- Mark JS as available so reveal animations never hide content without JS -->
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    // Always start on the hero when the page is reloaded:
+    // don't restore the old scroll position, and drop any #section left in the address.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    (function () {
+      var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType("navigation")[0] : null;
+      var isReload = nav ? nav.type === "reload" : (performance.navigation && performance.navigation.type === 1);
+      if (isReload && location.hash) history.replaceState(null, "", location.pathname + location.search);
+    })();
+  </script>
 
   <style>
     :root {
@@ -2281,6 +2291,24 @@
     } else {
       document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
     }
+
+    /* ---------------- IN-PAGE LINKS ----------------
+       Scroll to the section without adding #section to the address,
+       so a reload always starts on the hero. */
+    document.addEventListener("click", e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const id = a.getAttribute("href").slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (id === "home") window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+      if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+      if (a.classList.contains("skip-link")) { target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); }
+    });
 
     /* ---------------- FOOTER YEAR ---------------- */
     document.getElementById("year").textContent = new Date().getFullYear();
