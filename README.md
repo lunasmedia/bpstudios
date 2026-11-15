@@ -39,3 +39,10 @@ French is the default and is written directly in the HTML; English translations 
 ## Animated logo
 
 The homepage logo is built from the layers in `assets/logo/`. On load, the roof line draws in, the BP letters rise, STUDIOS spreads out, the tagline fades up, and the two spotlights flicker on. A light sweep then passes across the letters every few seconds. On computers the logo tilts in 3D to follow the mouse; on phones it floats gently. Visitors who have "reduce motion" turned on see the static logo.
+
+## Our spaces: two layouts
+
+- **Grid (default):** all four spaces in a 2 × 2 grid.
+- **Carousel:** one space at a time, scrolled sideways with swipe, arrows, trackpad or keyboard. Preview it by adding `?spaces=carousel` to the address, e.g. `https://lunasmedia.github.io/bpstudios/?spaces=carousel`.
+
+To make the carousel the default for everyone, open `index.html`, find `SPACES_LAYOUT`, and change `"grid"` to `"carousel"`.
