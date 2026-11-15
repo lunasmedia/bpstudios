@@ -734,6 +734,97 @@
       font-weight: 300;
     }
 
+    /* ---------- SPACES: CAROUSEL VERSION (?spaces=carousel) ---------- */
+
+    .space-controls { display: none; }
+
+    .spaces.is-carousel .space-grid {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      border-radius: var(--radius);
+      outline-offset: 6px;
+    }
+    .spaces.is-carousel .space-grid::-webkit-scrollbar { display: none; }
+
+    .spaces.is-carousel .space-card {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-height: 560px;
+      padding: 48px 52px 52px calc(56% + 52px);
+    }
+    .spaces.is-carousel .space-card:hover { transform: none; }
+    .spaces.is-carousel .space-photo { width: 58%; height: 100%; object-position: center; }
+    .spaces.is-carousel .space-card::after {
+      background: linear-gradient(90deg, rgba(20, 8, 4, 0) 0%, rgba(20, 8, 4, 0) 40%, rgba(26, 10, 5, 0.85) 55%, rgba(28, 11, 6, 0.98) 62%);
+    }
+    .spaces.is-carousel .space-letter { font-size: 140px; }
+
+    .spaces.is-carousel .space-controls {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 26px;
+    }
+    .space-count {
+      font-family: var(--serif);
+      font-size: 22px;
+      min-width: 74px;
+      color: var(--sand);
+    }
+    .space-count b { color: var(--cream); font-weight: 500; font-size: 30px; }
+    .space-progress {
+      flex: 1;
+      height: 1px;
+      background: var(--line-strong);
+      position: relative;
+      overflow: hidden;
+    }
+    .space-progress span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 25%;
+      background: var(--peach);
+      transition: transform .5s var(--ease), width .5s var(--ease);
+    }
+    .space-arrows { display: flex; gap: 10px; }
+    .space-arrow {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--cream);
+      transition: background .25s, color .25s, border-color .25s, opacity .25s;
+    }
+    .space-arrow svg { width: 18px; height: 18px; }
+    .space-arrow:hover:not(:disabled) { background: var(--cream); color: var(--earth); border-color: var(--cream); }
+    .space-arrow:disabled { opacity: .3; cursor: default; }
+
+    @media (max-width: 960px) {
+      .spaces.is-carousel .space-card { padding: 36px 36px 40px calc(52% + 36px); }
+      .spaces.is-carousel .space-photo { width: 54%; }
+      .spaces.is-carousel .space-letter { font-size: 110px; }
+    }
+    @media (max-width: 680px) {
+      .spaces.is-carousel .space-grid { gap: 14px; }
+      .spaces.is-carousel .space-card { min-height: 600px; padding: 24px 24px 28px; }
+      .spaces.is-carousel .space-photo { width: 100%; height: 52%; object-position: center 55%; }
+      .spaces.is-carousel .space-card::after {
+        background: linear-gradient(180deg, rgba(20, 8, 4, 0.35) 0%, rgba(20, 8, 4, 0) 14%, rgba(20, 8, 4, 0) 26%, rgba(26, 10, 5, 0.8) 41%, rgba(28, 11, 6, 0.97) 51%);
+      }
+      .spaces.is-carousel .space-letter { font-size: 90px; }
+      .space-controls { gap: 16px; }
+      .space-arrow { width: 46px; height: 46px; }
+    }
+
     /* ---------- PRODUCTIONS ---------- */
 
     .productions {
@@ -1318,7 +1409,7 @@
           </p>
         </div>
 
-        <div class="space-grid">
+        <div class="space-grid" id="spaceGrid">
 
           <article class="space-card reveal">
             <img class="space-photo" src="assets/spaces/studio-a.webp?v=20261115-4" alt="Grand plateau de tournage avec canapés jaunes et projecteurs" data-i18n-alt="s1.alt" loading="lazy" decoding="async">
@@ -1409,6 +1500,19 @@
             </div>
           </article>
 
+        </div>
+
+        <div class="space-controls" aria-hidden="true">
+          <span class="space-count" id="spaceCount"><b>01</b> / 04</span>
+          <span class="space-progress"><span id="spaceProgress"></span></span>
+          <span class="space-arrows">
+            <button type="button" class="space-arrow" id="spacePrev" aria-label="Espace précédent" data-i18n-aria="spaces.prev">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button type="button" class="space-arrow" id="spaceNext" aria-label="Espace suivant" data-i18n-aria="spaces.next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </span>
         </div>
 
         <p class="note reveal" data-i18n="spaces.note">
@@ -1822,6 +1926,8 @@
       "s4.label": "Green room", "s4.name": "The Dressing Rooms",
       "s4.desc": "Hair and make-up stations, a waiting area for talent and clients, and a crew corner to prepare every shoot in comfort.",
       "s4.t1": "Make-up", "s4.t2": "Wardrobe", "s4.t3": "Client hosting",
+      "spaces.prev": "Previous space",
+      "spaces.next": "Next space",
       "spaces.note": "Dimensions, equipment and availability shared on request. Viewings available by appointment.",
       "prod.eyebrow": "What gets made here",
       "prod.title": "Built for<br><em>creators.</em>",
@@ -2194,6 +2300,63 @@
         setStatus(m.emailOpen, "success");
       }
     });
+
+    /* ---------------- SPACES LAYOUT: grid (default) or carousel ---------------- */
+    // Preview the scrollable version with ?spaces=carousel.
+    // To make it the default, change "grid" to "carousel" below.
+    const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "grid";
+    (function () {
+      if (SPACES_LAYOUT !== "carousel") return;
+      const section = document.getElementById("spaces");
+      const track = document.getElementById("spaceGrid");
+      const cards = [...track.querySelectorAll(".space-card")];
+      const prev = document.getElementById("spacePrev");
+      const next = document.getElementById("spaceNext");
+      const count = document.getElementById("spaceCount");
+      const bar = document.getElementById("spaceProgress");
+
+      section.classList.add("is-carousel");
+      section.querySelector(".space-controls").removeAttribute("aria-hidden");
+      track.setAttribute("tabindex", "0");
+      track.setAttribute("role", "region");
+      track.setAttribute("aria-roledescription", "carousel");
+      track.setAttribute("aria-label", "BP Studios");
+      // Cards off to the side never cross the viewport vertically, so show them all at once
+      cards.forEach((c, i) => {
+        c.classList.remove("reveal");
+        c.setAttribute("aria-roledescription", "slide");
+        c.setAttribute("aria-label", (i + 1) + " / " + cards.length);
+      });
+      bar.style.width = (100 / cards.length) + "%";
+
+      const step = () => cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
+      const current = () => Math.round(track.scrollLeft / step());
+      function goTo(i) {
+        i = Math.max(0, Math.min(cards.length - 1, i));
+        track.scrollTo({ left: i * step() });
+      }
+      function update() {
+        const i = Math.max(0, Math.min(cards.length - 1, current()));
+        count.innerHTML = "<b>" + String(i + 1).padStart(2, "0") + "</b> / " + String(cards.length).padStart(2, "0");
+        bar.style.transform = "translateX(" + (i * 100) + "%)";
+        prev.disabled = i === 0;
+        next.disabled = i === cards.length - 1;
+        cards.forEach((c, k) => c.toggleAttribute("inert", k !== i));
+      }
+      prev.addEventListener("click", () => goTo(current() - 1));
+      next.addEventListener("click", () => goTo(current() + 1));
+      track.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { e.preventDefault(); goTo(current() + 1); }
+        if (e.key === "ArrowLeft")  { e.preventDefault(); goTo(current() - 1); }
+      });
+      let ticking = false;
+      track.addEventListener("scroll", () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); }
+      }, { passive: true });
+      // "Book this space" buttons in the form still work; keep the slide aligned after resizes
+      window.addEventListener("resize", () => { track.style.scrollBehavior = "auto"; goTo(current()); track.style.scrollBehavior = ""; });
+      update();
+    })();
 
     /* ---------------- DYNAMIC LOGO ---------------- */
     (function () {
