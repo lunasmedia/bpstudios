@@ -2394,7 +2394,7 @@
     // preview the other one with ?spaces=carousel or ?spaces=grid.
     const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "grid";
     (function () {
-      if (SPACES_LAYOUT !== "carousel") return;
+      if (SPACES_LAYOUT !== "grid") return;
       const section = document.getElementById("spaces");
       const track = document.getElementById("spaceGrid");
       const cards = [...track.querySelectorAll(".space-card")].filter(c => !c.hidden);
