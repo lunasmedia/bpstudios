@@ -1,1389 +1,2026 @@
-
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#672b19">
+  <meta name="theme-color" content="#5a2516">
 
+  <title>BP Studios | Studios de tournage à louer à Kinshasa</title>
   <meta name="description"
-    content="BP Studios, beautiful creative studio spaces for hire. Photography, filming, content creation, workshops and private experiences.">
+    content="BP Studios — espaces de studio à louer à Kinshasa, RDC. Plateaux pour cinéma, télévision, clips, publicités, photo et podcasts. Film studio spaces for hire in Kinshasa, DR Congo.">
 
-  <title>BP Studios | Studio Spaces for Hire</title>
+  <link rel="canonical" href="https://lunasmedia.github.io/bpstudios/">
+  <link rel="alternate" hreflang="fr" href="https://lunasmedia.github.io/bpstudios/?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://lunasmedia.github.io/bpstudios/?lang=en">
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BP Studios">
+  <meta property="og:title" content="BP Studios — Studio spaces for hire in Kinshasa">
+  <meta property="og:description" content="Film, TV, photo and podcast studio spaces for hire in Kinshasa, DR Congo.">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:locale" content="fr_CD">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/icon-512.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Hero logo loads first -->
+  <link rel="preload" as="image" href="assets/bp-studios-official-logo.webp"
+    imagesrcset="assets/bp-studios-official-logo-960.webp 960w, assets/bp-studios-official-logo.webp 1536w"
+    imagesizes="(max-width: 900px) 92vw, 600px">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BP Studios",
+    "description": "Studio spaces for hire for film, TV, photography, music videos and podcasts.",
+    "image": "assets/bp-studios-official-logo.jpg",
+    "logo": "assets/bp-studios-logo-full.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kinshasa",
+      "addressCountry": "CD"
+    },
+    "areaServed": "Kinshasa"
+  }
+  </script>
+
+  <!-- Mark JS as available so reveal animations never hide content without JS -->
+  <script>document.documentElement.classList.add("js");</script>
 
   <style>
     :root {
-      --terracotta: #A34D2C;
-      --rust: #78351E;
-      --dark: #35170F;
-      --cream: #FFF0DD;
-      --ivory: #FFF8EE;
-      --peach: #E5BEA4;
-      --border: rgba(255,234,209,0.2);
+      --terracotta: #9a4526;
+      --clay: #b55a35;
+      --rust: #6e2e1a;
+      --earth: #4a1e11;
+      --night: #241009;
+      --ink: #1b0b06;
+      --cream: #f6eada;
+      --sand: #efd2b7;
+      --peach: #f1b98f;
+      --muted: #dcb59b;
+      --line: rgba(246, 234, 218, 0.16);
+      --line-strong: rgba(246, 234, 218, 0.32);
       --texture: url("assets/terracotta-texture.webp");
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+      --radius: 6px;
+      --header-h: 84px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 8px);
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
       margin: 0;
-      background: var(--rust);
+      background: var(--night);
       color: var(--cream);
-      font-family: "DM Sans", sans-serif;
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    body.menu-open { overflow: hidden; }
+
+    [hidden] { display: none !important; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    h1, h2, h3, h4, p { margin: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--peach);
+      outline-offset: 3px;
     }
 
-    button, input, select, textarea {
-      font: inherit;
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      z-index: 200;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      font-weight: 500;
     }
-
-    button {
-      cursor: pointer;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
+    .skip-link:focus { top: 16px; }
 
     .container {
       width: min(1200px, calc(100% - 48px));
-      margin: auto;
-    }
-
-    .serif {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: normal;
-      letter-spacing: -0.045em;
+      margin-inline: auto;
     }
 
     .eyebrow {
-      color: #FFD4AD;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--peach);
       text-transform: uppercase;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.32em;
       font-size: 12px;
-      font-weight: bold;
+      font-weight: 500;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: currentColor;
+      opacity: .8;
     }
 
+    .display {
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.02;
+    }
+    .display em { font-style: italic; color: var(--peach); }
+
     .texture {
-      background-color: #78351E;
-      background-image:
-        linear-gradient(
-          115deg,
-          rgba(52,17,8,0.2),
-          rgba(187,91,48,0.12)
-        ),
-        var(--texture);
+      background-color: var(--terracotta);
+      background-image: var(--texture);
       background-size: cover;
       background-position: center;
     }
 
-    /* NAVIGATION */
+    /* ---------- BUTTONS ---------- */
 
-    header {
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 50px;
+      padding: 0 26px;
+      background: var(--cream);
+      color: var(--earth);
+      border: 1px solid var(--cream);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: transform .3s var(--ease), background .3s, color .3s, border-color .3s;
+      white-space: nowrap;
+    }
+    .btn svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+    .btn:hover { background: #fff; transform: translateY(-2px); }
+    .btn:hover svg { transform: translate(2px, -2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: var(--line-strong);
+    }
+    .btn-outline:hover { background: rgba(246,234,218,.08); border-color: var(--cream); }
+
+    .btn-whatsapp { background: #25d366; border-color: #25d366; color: #06301a; }
+    .btn-whatsapp:hover { background: #3be07a; }
+
+    /* ---------- HEADER ---------- */
+
+    .site-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      inset: 0 0 auto 0;
       z-index: 100;
-      background: rgba(43,17,10,0.46);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.3s ease;
+      height: var(--header-h);
+      transition: background .35s, border-color .35s, height .35s;
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled {
+      background: rgba(30, 12, 7, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--line);
+      --header-h: 70px;
     }
 
-    header.scrolled {
-      background: rgba(43,17,10,0.95);
-    }
-
-    nav {
-      height: 78px;
+    .nav {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
     }
 
-    .brand {
-      font-family: Georgia, serif;
-      font-size: 28px;
-      white-space: nowrap;
+    .brand { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .brand img {
+      height: 62px;
+      width: auto;
+      transition: height .35s;
     }
-
-    .brand span {
-      font-family: "DM Sans", sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 4px;
-      margin-left: 8px;
-    }
+    .site-header.scrolled .brand img { height: 50px; }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 34px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
-
     .nav-links a {
-      font-size: 13px;
-      font-weight: 600;
-      transition: color 0.2s;
+      position: relative;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--sand);
+      padding: 6px 0;
+      transition: color .2s;
     }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: var(--peach);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s var(--ease);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--cream); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
 
-    .nav-links a:hover {
-      color: #FFCC9D;
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+
+    .lang-switch {
+      display: inline-flex;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 3px;
     }
+    .lang-switch button {
+      background: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      transition: background .2s, color .2s;
+    }
+    .lang-switch button[aria-pressed="true"] { background: var(--cream); color: var(--earth); }
+
+    .nav-cta { min-height: 44px; padding: 0 20px; font-size: 12px; }
 
     .menu-btn {
       display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line-strong);
       background: transparent;
-      border: 0;
-      color: white;
-      font-size: 30px;
+      border-radius: 50%;
+      position: relative;
     }
-
-    /* BUTTONS */
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 15px 24px;
-      background: #F3D1AC;
-      color: #492112;
-      border: 1px solid #F3D1AC;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      transition: 0.3s;
+    .menu-btn span {
+      position: absolute;
+      left: 13px;
+      right: 13px;
+      height: 1.5px;
+      background: var(--cream);
+      transition: transform .3s var(--ease), opacity .2s;
     }
+    .menu-btn span:nth-child(1) { top: 17px; }
+    .menu-btn span:nth-child(2) { top: 22px; }
+    .menu-btn span:nth-child(3) { top: 27px; }
+    .menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
-    .btn:hover {
-      transform: translateY(-4px);
-      background: #FFF1DC;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--cream);
-      border-color: var(--cream);
-    }
-
-    .btn-outline:hover {
-      color: var(--dark);
-    }
-
-    /* HERO */
+    /* ---------- HERO ---------- */
 
     .hero {
+      position: relative;
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
-      padding: 130px 0 80px;
-      position: relative;
+      padding: calc(var(--header-h) + 40px) 0 90px;
       isolation: isolate;
+      overflow: hidden;
     }
-
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(48,16,8,0.87),
-        rgba(68,22,9,0.57),
-        rgba(50,15,7,0.18)
-      );
       z-index: -1;
+      background:
+        radial-gradient(ellipse at 78% 45%, rgba(255, 196, 140, 0.18), transparent 55%),
+        linear-gradient(100deg, rgba(27, 10, 5, 0.9) 0%, rgba(55, 20, 9, 0.7) 45%, rgba(60, 22, 10, 0.35) 100%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1.05fr;
+      grid-template-columns: 1fr 1.08fr;
       align-items: center;
-      gap: 6%;
+      gap: 64px;
     }
 
     .hero h1 {
-      font-size: clamp(70px, 8vw, 130px);
-      line-height: 0.95;
-      margin: 22px 0 28px;
+      font-size: clamp(52px, 7vw, 104px);
+      margin: 26px 0 26px;
     }
 
-    .hero p {
-      font-size: 17px;
-      line-height: 1.8;
-      color: #F3D7C5;
-      max-width: 460px;
+    .hero-lead {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--sand);
+      max-width: 500px;
     }
 
     .hero-buttons {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 35px;
+      margin-top: 38px;
     }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 26px;
+      margin-top: 44px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 9px; }
+    .hero-meta svg { width: 17px; height: 17px; color: var(--peach); }
+
+    .hero-visual { position: relative; }
 
     .hero-logo {
       width: 100%;
-      display: block;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      box-shadow: 0 32px 90px rgba(30,9,4,0.5);
-      transform: perspective(1100px) rotateY(-4deg);
-      transition: transform 0.7s ease;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow:
+        0 40px 80px -20px rgba(15, 4, 2, 0.75),
+        0 0 0 1px rgba(246, 234, 218, 0.12);
     }
 
-    .hero-logo:hover {
-      transform: perspective(1100px) rotateY(0);
+    .hero-badge {
+      position: absolute;
+      left: -22px;
+      bottom: -22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: rgba(30, 12, 7, 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero-badge .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #e8432e;
+      box-shadow: 0 0 0 0 rgba(232, 67, 46, .6);
+      animation: rec 1.8s infinite;
+    }
+    @keyframes rec {
+      0% { box-shadow: 0 0 0 0 rgba(232, 67, 46, .6); }
+      70% { box-shadow: 0 0 0 10px rgba(232, 67, 46, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(232, 67, 46, 0); }
     }
 
-    /* MOVING TEXT */
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      width: 26px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+    }
+    .scroll-cue::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      width: 3px;
+      height: 8px;
+      margin-left: -1.5px;
+      border-radius: 2px;
+      background: var(--cream);
+      animation: cue 2s infinite;
+    }
+    @keyframes cue {
+      0% { opacity: 0; transform: translateY(0); }
+      40% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(14px); }
+    }
+
+    /* ---------- TICKER ---------- */
 
     .ticker {
       overflow: hidden;
-      white-space: nowrap;
-      background: rgba(40,13,7,0.85);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
+      background: var(--ink);
+      border-block: 1px solid var(--line);
+      padding: 22px 0;
     }
-
     .ticker-track {
       display: flex;
-      gap: 60px;
       width: max-content;
-      animation: marquee 32s linear infinite;
+      animation: marquee 40s linear infinite;
     }
-
-    .ticker-track span {
-      font-size: 12px;
-      letter-spacing: 3px;
-      font-weight: bold;
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      padding-right: 44px;
+      flex-shrink: 0;
     }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%);
-      }
+    .ticker-group span {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-style: italic;
+      color: var(--sand);
+      white-space: nowrap;
     }
-
-    /* GENERAL SECTIONS */
-
-    section.content-section {
-      padding: 110px 0;
+    .ticker-group i {
+      font-style: normal;
+      color: var(--clay);
+      font-size: 14px;
     }
+    @keyframes marquee { to { transform: translateX(-50%); } }
 
+    /* ---------- SECTIONS ---------- */
+
+    .section { padding: 120px 0; position: relative; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 40px 64px;
+      margin-bottom: 60px;
+    }
     .section-title {
-      font-size: clamp(48px, 5vw, 82px);
-      line-height: 1.05;
-      margin: 16px 0 30px;
+      font-size: clamp(40px, 5vw, 72px);
+      margin-top: 18px;
     }
-
     .section-intro {
-      max-width: 580px;
-      line-height: 1.8;
-      color: #F2CDB4;
-      margin-bottom: 45px;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 520px;
     }
 
-    /* SERVICES */
+    /* ---------- SPACES ---------- */
 
-    .services {
-      background:
-        linear-gradient(
-          150deg,
-          rgba(58,19,9,0.65),
-          rgba(117,49,27,0.3)
-        ),
-        var(--texture) center / cover;
+    .spaces { background: var(--night); }
+
+    .space-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
     }
 
-    .service-grid {
+    .space-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 400px;
+      padding: 36px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid var(--line);
+      transition: transform .5s var(--ease), border-color .4s;
+    }
+    .space-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: var(--texture) center / cover, var(--terracotta);
+      transition: transform 1.2s var(--ease);
+    }
+    .space-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(160deg, rgba(36, 14, 8, 0.35) 0%, rgba(30, 11, 6, 0.88) 70%);
+    }
+    .space-card:nth-child(2)::after { background: linear-gradient(200deg, rgba(36,14,8,.45), rgba(30,11,6,.9) 70%); }
+    .space-card:nth-child(3)::after { background: linear-gradient(20deg, rgba(36,14,8,.5), rgba(30,11,6,.92) 75%); }
+    .space-card:nth-child(4)::after { background: linear-gradient(130deg, rgba(36,14,8,.4), rgba(30,11,6,.9) 70%); }
+
+    .space-card:hover { transform: translateY(-6px); border-color: var(--line-strong); }
+    .space-card:hover::before { transform: scale(1.06); }
+
+    .space-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .space-letter {
+      font-family: var(--serif);
+      font-size: 120px;
+      line-height: .8;
+      color: rgba(246, 234, 218, 0.9);
+    }
+    .space-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      color: var(--peach);
+      background: rgba(27, 11, 6, .35);
+    }
+    .space-icon svg { width: 26px; height: 26px; }
+
+    .space-body { margin-top: auto; padding-top: 36px; }
+    .space-label {
+      font-size: 12px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--peach);
+    }
+    .space-card h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.1;
+      margin: 8px 0 12px;
+    }
+    .space-card p { color: var(--sand); font-weight: 300; max-width: 460px; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 22px 0 26px;
+      padding: 0;
+      list-style: none;
+    }
+    .tags li {
+      font-size: 12px;
+      letter-spacing: .06em;
+      padding: 5px 13px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--sand);
+      background: rgba(27, 11, 6, .3);
+    }
+
+    .space-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--peach);
+      padding-bottom: 4px;
+      background: none;
+      border-top: 0; border-left: 0; border-right: 0;
+      transition: gap .3s var(--ease), color .2s;
+    }
+    .space-link:hover { gap: 16px; color: var(--peach); }
+    .space-link svg { width: 15px; height: 15px; }
+
+    .note {
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ---------- PRODUCTIONS ---------- */
+
+    .productions {
+      background: var(--earth);
+      border-block: 1px solid var(--line);
+    }
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .prod {
+      padding: 38px 34px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background .4s;
+    }
+    .prod:hover { background: rgba(246, 234, 218, 0.04); }
+    .prod svg { width: 34px; height: 34px; color: var(--peach); margin-bottom: 26px; }
+    .prod h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+    .prod p { color: var(--muted); font-weight: 300; font-size: 16px; }
+
+    /* ---------- ABOUT ---------- */
+
+    .about { overflow: hidden; }
+    .about::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(36,14,8,.25), rgba(28,10,5,.86) 55%);
+    }
+    .about-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-logo-wrap {
+      display: grid;
+      place-items: center;
+      padding: 40px 20px;
+    }
+    .about-logo {
+      width: min(460px, 100%);
+      height: auto;
+      filter: drop-shadow(0 18px 24px rgba(20, 6, 2, .45));
+    }
+    .about-copy p { color: var(--sand); font-weight: 300; margin-top: 18px; }
+    .about-copy .btn { margin-top: 34px; }
+
+    .values {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
     }
-
-    .service-card {
-      min-height: 330px;
-      position: relative;
-      overflow: hidden;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: linear-gradient(
-        145deg,
-        rgba(242,174,118,0.11),
-        rgba(42,14,6,0.34)
-      );
-      border: 1px solid rgba(255,236,217,0.25);
-      transition: 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      background: linear-gradient(
-        145deg,
-        rgba(242,174,118,0.25),
-        rgba(42,14,6,0.4)
-      );
-    }
-
-    .service-number {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: #FFD2AC;
-    }
-
-    .service-card h3 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 32px;
-      margin-bottom: 14px;
-    }
-
-    .service-card p {
-      color: #F0CDB6;
-      line-height: 1.75;
-      font-size: 14px;
-    }
-
-    .service-arrow {
-      align-self: end;
-      font-size: 25px;
-    }
-
-    /* ABOUT */
-
-    .about {
-      background: #2F140E;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8%;
-      align-items: center;
-    }
-
-    .about-logo {
-      width: 100%;
-      height: auto;
+    .values strong {
       display: block;
-      box-shadow: 25px 25px 0 rgba(214,132,84,0.12);
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--cream);
     }
+    .values span { font-size: 14px; color: var(--muted); }
 
-    .about p {
-      color: #EAC5AE;
-      line-height: 1.9;
-    }
+    /* ---------- PROCESS ---------- */
 
-    /* HOW IT WORKS */
-
-    .process {
-      background:
-        linear-gradient(
-          140deg,
-          rgba(91,35,18,0.75),
-          rgba(155,68,34,0.4)
-        ),
-        var(--texture) center / cover;
-    }
-
+    .process { background: var(--night); }
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 45px;
+      gap: 26px;
+      counter-reset: step;
     }
-
     .step {
-      border-top: 1px solid #F3C59F;
-      padding-top: 25px;
+      position: relative;
+      padding: 34px 32px 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(154, 69, 38, 0.12), transparent);
     }
-
     .step-number {
-      font-family: Georgia, serif;
-      font-size: 55px;
-      color: #F6BC90;
+      font-family: var(--serif);
+      font-size: 64px;
+      line-height: 1;
+      color: var(--clay);
     }
-
     .step h3 {
-      margin: 20px 0 10px;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 30px;
+      margin: 18px 0 10px;
     }
+    .step p { color: var(--muted); font-weight: 300; }
 
-    .step p {
-      color: #EDCBB3;
-      line-height: 1.75;
+    /* ---------- FAQ ---------- */
+
+    .faq { background: var(--ink); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+      align-items: start;
     }
-
-    /* FAQ */
-
-    .faq {
-      background: #38180F;
-    }
-
-    .faq details {
-      padding: 22px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
     .faq summary {
+      list-style: none;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .faq details p {
-      color: #E8C4AC;
-      margin-top: 15px;
-      line-height: 1.8;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      background:
-        linear-gradient(
-          120deg,
-          rgba(70,23,10,0.7),
-          rgba(129,50,24,0.5)
-        ),
-        var(--texture) center / cover;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 8%;
-    }
-
-    .contact-text p {
-      line-height: 1.9;
-      color: #F4D3BD;
-    }
-
-    .contact-form {
-      padding: 35px;
-      background: rgba(39,13,7,0.6);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(6px);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .field {
-      margin-bottom: 20px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 9px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      padding: 15px;
-      color: var(--cream);
-      background: rgba(255,240,224,0.07);
-      border: 1px solid rgba(255,230,207,0.32);
-      outline: none;
-      border-radius: 3px;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: #FFD4AB;
-    }
-
-    .field select option {
-      color: #35170F;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: #D5AD93;
-    }
-
-    .form-note {
-      color: #E4BEA4;
-      font-size: 12px;
-      line-height: 1.7;
-      margin-top: 18px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 45px 0;
-      background: #21100B;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-flex {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
+      padding: 26px 0;
+      font-size: 19px;
+      font-weight: 400;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--peach);
+      transition: transform .3s var(--ease);
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p {
+      color: var(--muted);
+      font-weight: 300;
+      padding: 0 50px 26px 0;
     }
 
-    footer small {
-      color: #D5B09A;
+    /* ---------- CONTACT ---------- */
+
+    .contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(30,11,6,.88), rgba(70,26,12,.55));
     }
+    .contact-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .contact-copy p { color: var(--sand); font-weight: 300; margin-top: 20px; max-width: 440px; }
 
-    /* SCROLL REVEAL ANIMATIONS */
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 40px 0 0;
+      display: grid;
+      gap: 18px;
+    }
+    .contact-list li { display: flex; gap: 16px; align-items: flex-start; }
+    .contact-list .ic {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      color: var(--peach);
+    }
+    .contact-list .ic svg { width: 19px; height: 19px; }
+    .contact-list small {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-list a:hover { color: var(--peach); }
 
-    .reveal {
+    .contact-form {
+      padding: 40px;
+      background: rgba(24, 9, 5, 0.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .form-title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 32px;
+      margin-bottom: 26px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+    .field { margin-bottom: 20px; }
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 14px 16px;
+      color: var(--cream);
+      background: rgba(246, 234, 218, 0.05);
+      border: 1px solid rgba(246, 234, 218, 0.22);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color .2s, background .2s;
+      font-size: 16px; /* prevents iOS zoom */
+    }
+    .field textarea { resize: vertical; min-height: 130px; }
+    .field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23f1b98f' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .field select option { color: var(--ink); background: #fff; }
+    .field input[type="date"] { color-scheme: dark; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--peach);
+      background: rgba(246, 234, 218, 0.08);
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(220, 181, 155, .65); }
+    .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #ff8a70; }
+    .field .error {
+      display: none;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #ffab96;
+    }
+    .field.invalid .error { display: block; }
+
+    .form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .form-actions .btn { flex: 1 1 200px; }
+
+    .form-status {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      min-height: 1.5em;
+    }
+    .form-status.success { color: #9fe0b0; }
+    .form-status.warn { color: #ffcf8a; }
+
+    /* ---------- FOOTER ---------- */
+
+    .site-footer {
+      background: var(--ink);
+      border-top: 1px solid var(--line);
+      padding: 80px 0 36px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid var(--line);
+    }
+    .footer-logo { width: 240px; height: auto; }
+    .footer-grid h4 {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--peach);
+      margin-bottom: 18px;
+    }
+    .footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .footer-grid ul a { color: var(--muted); transition: color .2s; }
+    .footer-grid ul a:hover { color: var(--cream); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .footer-bottom a:hover { color: var(--cream); }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 90;
+      width: 58px;
+      height: 58px;
+      display: none;
+      place-items: center;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      transition: transform .3s var(--ease);
+    }
+    .wa-float.show { display: grid; }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 30px; height: 30px; }
+
+    /* ---------- REVEAL ---------- */
+
+    .js .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(30px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease);
+      transition-delay: var(--d, 0s);
+    }
+    .js .reveal.visible { opacity: 1; transform: none; }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 1080px) {
+      .nav-links { gap: 22px; }
+      .nav-cta { display: none; }
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .service-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero-logo {
-        transform: none;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      nav {
-        height: 68px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
+    @media (max-width: 960px) {
+      :root { --header-h: 72px; }
+      .menu-btn { display: block; }
+      .brand img { height: 50px; }
+      .site-header.scrolled .brand img { height: 46px; }
 
       .nav-links {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        padding: 25px;
-        background: #30150E;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .hero {
-        padding: 120px 0 70px;
-      }
-
-      .hero h1 {
-        font-size: 65px;
-      }
-
-      section.content-section {
-        padding: 75px 0;
-      }
-
-      .service-grid,
-      .steps,
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card {
-        min-height: 280px;
-      }
-
-      .contact-form {
-        padding: 20px;
-      }
-
-      .footer-flex {
+        position: fixed;
+        inset: var(--header-h) 0 0 0;
         flex-direction: column;
         align-items: flex-start;
+        gap: 6px;
+        padding: 30px 24px;
+        background: rgba(24, 9, 5, 0.98);
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform .45s var(--ease), visibility .45s;
       }
+      .nav-links.open { transform: none; visibility: visible; }
+      .nav-links a {
+        font-family: var(--serif);
+        font-size: 36px;
+        letter-spacing: 0;
+        color: var(--cream);
+      }
+      .nav-links a::after { display: none; }
+      .nav-links .mobile-cta { margin-top: 24px; }
+      .nav-links .mobile-cta a {
+        padding: 0 28px;
+        font-family: var(--sans);
+        font-size: 13px;
+        letter-spacing: .16em;
+        color: var(--earth);
+      }
+
+      .site-header.menu-active { background: rgba(24, 9, 5, 0.98); }
+
+      .hero-grid, .about-grid, .contact-grid, .faq-grid, .section-head { grid-template-columns: 1fr; }
+      .hero-grid { gap: 56px; }
+      .hero-visual { order: -1; max-width: 640px; }
+      .hero-badge { left: 14px; bottom: -18px; }
+      .scroll-cue { display: none; }
+      .section-head { gap: 20px; }
+      .prod-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .faq-grid, .contact-grid { gap: 48px; }
+      .about-logo-wrap { padding: 0; }
+      .about-logo { width: min(340px, 80%); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (min-width: 961px) {
+      .nav-links .mobile-cta { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .container { width: calc(100% - 36px); }
+      .section { padding: 84px 0; }
+      .hero { padding-top: calc(var(--header-h) + 28px); padding-bottom: 70px; }
+      .hero-lead { font-size: 17px; }
+      .hero-buttons .btn { flex: 1 1 100%; }
+      .space-grid, .steps, .prod-grid, .form-row, .values { grid-template-columns: 1fr; }
+      .space-card { min-height: 360px; padding: 28px; }
+      .space-letter { font-size: 90px; }
+      .space-card h3 { font-size: 34px; }
+      .contact-form { padding: 26px 20px; }
+      .faq summary { font-size: 17px; }
+      .faq details p { padding-right: 0; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .lang-switch button { padding: 5px 9px; }
+      .ticker-group span { font-size: 22px; }
+      .eyebrow { letter-spacing: .22em; font-size: 11px; gap: 10px; }
+      .eyebrow::before { width: 24px; }
+      .wa-float { width: 52px; height: 52px; right: 16px; bottom: 16px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .ticker-track {
-        animation: none;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
 
-  <header id="header">
-    <nav class="container">
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></symbol>
+      <symbol id="i-photo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.8"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M8.5 21.5h7"/></symbol>
+      <symbol id="i-cyc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4v10a6 6 0 0 0 6 6h12"/><path d="M7 4v9a3 3 0 0 0 3 3h11"/></symbol>
+      <symbol id="i-sofa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3"/><path d="M3 13a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM6 18v2M18 18v2"/></symbol>
+      <symbol id="i-mirror" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="2"/><path d="M8 21h8M12 16v5M9 7l2-2M9 10l5-5"/></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></symbol>
+      <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2"/><path d="M8 2.5l4 3.5 4-3.5"/></symbol>
+      <symbol id="i-mega" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 0 0 1 1h3l7 4V5L7 9H4a1 1 0 0 0-1 1zM18 8.5a5 5 0 0 1 0 7"/></symbol>
+      <symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 8h4M3 16h4M17 8h4M17 16h4M3 12h18"/></symbol>
+      <symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5.5 4.8"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.36A9.9 9.9 0 1 0 12.04 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.08.8.82-3-.2-.31a8.2 8.2 0 1 1 6.94 3.84zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.97-.14.16-.29.18-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.85 2.03c0 1.2.87 2.36 1 2.52.12.16 1.71 2.62 4.15 3.67 1.54.67 2.15.72 2.92.6.47-.07 1.46-.6 1.66-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></symbol>
+    </defs>
+  </svg>
 
-      <a href="#home" class="brand">
-        BP<span>STUDIOS</span>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="header">
+    <nav class="container nav" aria-label="Navigation principale" data-i18n-aria="navLabel">
+
+      <a href="#home" class="brand" aria-label="BP Studios — accueil">
+        <img src="assets/bp-studios-logo.png" width="520" height="365" alt="BP Studios">
       </a>
 
-      <button class="menu-btn"
-        id="menuButton"
-        aria-label="Toggle navigation"
-        aria-expanded="false">
-        ☰
-      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#spaces" data-i18n="nav.spaces">Nos espaces</a></li>
+        <li><a href="#productions" data-i18n="nav.productions">Productions</a></li>
+        <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#how-it-works" data-i18n="nav.how">Réservation</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li class="mobile-cta"><a href="#contact" class="btn" data-i18n="cta.enquire">Demander un devis</a></li>
+      </ul>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#services">Our Spaces</a>
-        <a href="#about">About Us</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#faq">FAQs</a>
-        <a href="#contact">Contact</a>
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Langue / Language">
+          <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <a href="#contact" class="btn nav-cta">
+          <span data-i18n="cta.enquire">Demander un devis</span>
+          <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+
+        <button class="menu-btn" id="menuButton" type="button"
+          aria-controls="navLinks" aria-expanded="false" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-
-      <a href="#contact" class="btn nav-cta">
-        ENQUIRE NOW ↗
-      </a>
 
     </nav>
   </header>
 
-  <main>
+  <main id="main">
 
-    <!-- HOMEPAGE -->
-
+    <!-- ================= HERO ================= -->
     <section class="hero texture" id="home">
-
       <div class="container hero-grid">
 
-        <div class="reveal">
+        <div class="hero-copy">
+          <div class="eyebrow reveal" data-i18n="hero.eyebrow">Studios de tournage · Kinshasa</div>
 
-          <div class="eyebrow">
-            BP STUDIOS · STUDIO SPACES FOR HIRE
-          </div>
-
-          <h1 class="serif">
-            Your space.<br>
-            Your vision.
+          <h1 class="display reveal" style="--d:.08s" data-i18n-html="hero.title">
+            Votre plateau.<br><em>Votre vision.</em>
           </h1>
 
-          <p>
-            Beautifully considered spaces for ideas,
-            content and experiences. Make room for
-            your next big thing at BP Studios.
+          <p class="hero-lead reveal" style="--d:.16s" data-i18n="hero.lead">
+            Des espaces de studio pensés pour le cinéma, la télévision, les clips,
+            la publicité, la photo et les podcasts — au cœur de Kinshasa.
           </p>
 
-          <div class="hero-buttons">
-
+          <div class="hero-buttons reveal" style="--d:.24s">
             <a href="#contact" class="btn">
-              ENQUIRE ABOUT HIRE ↗
+              <span data-i18n="cta.book">Réserver un studio</span>
+              <svg aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-
-            <a href="#services" class="btn btn-outline">
-              EXPLORE OUR SPACES
-            </a>
-
+            <a href="#spaces" class="btn btn-outline" data-i18n="cta.explore">Découvrir nos espaces</a>
           </div>
 
+          <div class="hero-meta reveal" style="--d:.32s">
+            <span><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="hero.meta1">Kinshasa, RD Congo</span></span>
+            <span><svg aria-hidden="true"><use href="#i-camera"/></svg><span data-i18n="hero.meta2">Cinéma · TV · Photo · Podcast</span></span>
+            <span><svg aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="hero.meta3">À l'heure, demi-journée ou journée</span></span>
+          </div>
         </div>
 
-        <div class="reveal">
-
-          <!-- EXACT ORIGINAL LOGO -->
-
-          <img
-            src="assets/bp-studios-official-logo.png"
-            alt="BP Studios official illuminated terracotta logo"
-            class="hero-logo"
-            fetchpriority="high"
-          >
-
+        <div class="hero-visual reveal" style="--d:.12s">
+          <picture>
+            <source type="image/webp"
+              srcset="assets/bp-studios-official-logo-960.webp 960w, assets/bp-studios-official-logo.webp 1536w"
+              sizes="(max-width: 900px) 92vw, 600px">
+            <img class="hero-logo"
+              src="assets/bp-studios-official-logo.jpg"
+              width="1536" height="1024"
+              alt="Logo officiel BP Studios — Studio spaces for hire"
+              data-i18n-alt="hero.logoAlt"
+              fetchpriority="high">
+          </picture>
+          <div class="hero-badge" aria-hidden="true">
+            <span class="dot"></span>
+            <span data-i18n="hero.badge">Plateaux disponibles</span>
+          </div>
         </div>
 
       </div>
-
+      <a href="#spaces" class="scroll-cue" aria-label="Défiler" data-i18n-aria="scroll"></a>
     </section>
 
-    <!-- MOVING SERVICE TEXT -->
-
+    <!-- ================= TICKER ================= -->
     <div class="ticker" aria-hidden="true">
-
-      <div class="ticker-track">
-
-        <span>
-          PHOTOGRAPHY ✦ CONTENT CREATION ✦
-          FILM & VIDEO ✦ WORKSHOPS ✦
-          PRIVATE EXPERIENCES ✦ CREATIVE SPACE ✦
-        </span>
-
-        <span>
-          PHOTOGRAPHY ✦ CONTENT CREATION ✦
-          FILM & VIDEO ✦ WORKSHOPS ✦
-          PRIVATE EXPERIENCES ✦ CREATIVE SPACE ✦
-        </span>
-
+      <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-group" id="tickerGroup">
+          <span data-i18n="tk.1">Cinéma</span><i>✦</i>
+          <span data-i18n="tk.2">Séries TV</span><i>✦</i>
+          <span data-i18n="tk.3">Clips musicaux</span><i>✦</i>
+          <span data-i18n="tk.4">Publicités</span><i>✦</i>
+          <span data-i18n="tk.5">Photographie</span><i>✦</i>
+          <span data-i18n="tk.6">Podcasts</span><i>✦</i>
+          <span data-i18n="tk.7">Interviews</span><i>✦</i>
+          <span data-i18n="tk.8">Contenu digital</span><i>✦</i>
+        </div>
       </div>
-
     </div>
 
-    <!-- SERVICES -->
-
-    <section class="content-section services" id="services">
-
+    <!-- ================= SPACES ================= -->
+    <section class="section spaces" id="spaces">
       <div class="container">
 
-        <div class="eyebrow reveal">
-          EXPLORE THE POSSIBILITIES
+        <div class="section-head">
+          <div>
+            <div class="eyebrow reveal" data-i18n="spaces.eyebrow">Nos espaces</div>
+            <h2 class="display section-title reveal" data-i18n-html="spaces.title">Un espace pour<br><em>chaque production.</em></h2>
+          </div>
+          <p class="section-intro reveal" data-i18n="spaces.intro">
+            BP Studios réunit plusieurs espaces à louer séparément ou ensemble.
+            Dites-nous ce que vous tournez et nous vous proposerons
+            la configuration idéale.
+          </p>
         </div>
 
-        <h2 class="serif section-title reveal">
-          Room for<br>every idea.
-        </h2>
+        <div class="space-grid">
 
-        <p class="section-intro reveal">
-          From personal projects to professional
-          productions, tell us what you're planning
-          and we'll discuss how BP Studios can
-          accommodate your vision.
-        </p>
-
-        <div class="service-grid">
-
-          <article class="service-card reveal">
-            <span class="service-number">01 / CREATE</span>
-
-            <div>
-              <h3>Photography</h3>
-              <p>
-                Enquire about spaces for portraits,
-                fashion photography, product shoots
-                and creative campaigns.
-              </p>
+          <article class="space-card reveal">
+            <div class="space-top">
+              <span class="space-letter">A</span>
+              <span class="space-icon"><svg aria-hidden="true"><use href="#i-cyc"/></svg></span>
             </div>
-
-            <span class="service-arrow">↗</span>
+            <div class="space-body">
+              <span class="space-label" data-i18n="s1.label">Studio A</span>
+              <h3 data-i18n="s1.name">Le Plateau</h3>
+              <p data-i18n="s1.desc">Notre grand plateau avec fond cyclo pour les clips, publicités, séries et shootings de mode qui demandent de l'espace et une lumière maîtrisée.</p>
+              <ul class="tags">
+                <li data-i18n="s1.t1">Clips</li>
+                <li data-i18n="s1.t2">Publicités</li>
+                <li data-i18n="s1.t3">Fiction</li>
+                <li data-i18n="s1.t4">Mode</li>
+              </ul>
+              <button type="button" class="space-link" data-space="studio-a">
+                <span data-i18n="cta.space">Réserver cet espace</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
           </article>
 
-          <article class="service-card reveal">
-            <span class="service-number">02 / CAPTURE</span>
-
-            <div>
-              <h3>Video & Filming</h3>
-              <p>
-                Explore studio hire for interviews,
-                promotional videos, filming and
-                digital productions.
-              </p>
+          <article class="space-card reveal" style="--d:.1s">
+            <div class="space-top">
+              <span class="space-letter">B</span>
+              <span class="space-icon"><svg aria-hidden="true"><use href="#i-sofa"/></svg></span>
             </div>
-
-            <span class="service-arrow">↗</span>
+            <div class="space-body">
+              <span class="space-label" data-i18n="s2.label">Studio B</span>
+              <h3 data-i18n="s2.name">Le Salon</h3>
+              <p data-i18n="s2.desc">Un décor modulable aux tons chauds, prêt à habiller : idéal pour les talk-shows, interviews, scènes d'intérieur et contenus de marque.</p>
+              <ul class="tags">
+                <li data-i18n="s2.t1">Talk-shows</li>
+                <li data-i18n="s2.t2">Interviews</li>
+                <li data-i18n="s2.t3">Scènes d'intérieur</li>
+              </ul>
+              <button type="button" class="space-link" data-space="studio-b">
+                <span data-i18n="cta.space">Réserver cet espace</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
           </article>
 
-          <article class="service-card reveal">
-            <span class="service-number">03 / INSPIRE</span>
-
-            <div>
-              <h3>Content Creation</h3>
-              <p>
-                A creative environment for social
-                media content, branding projects,
-                podcasts and digital storytelling.
-              </p>
+          <article class="space-card reveal">
+            <div class="space-top">
+              <span class="space-letter">C</span>
+              <span class="space-icon"><svg aria-hidden="true"><use href="#i-mic"/></svg></span>
             </div>
-
-            <span class="service-arrow">↗</span>
+            <div class="space-body">
+              <span class="space-label" data-i18n="s3.label">Studio C</span>
+              <h3 data-i18n="s3.name">La Cabine</h3>
+              <p data-i18n="s3.desc">Un espace intime et traité acoustiquement pour les podcasts vidéo, voix off, émissions en ligne et entretiens à deux ou trois personnes.</p>
+              <ul class="tags">
+                <li data-i18n="s3.t1">Podcasts</li>
+                <li data-i18n="s3.t2">Voix off</li>
+                <li data-i18n="s3.t3">Live streaming</li>
+              </ul>
+              <button type="button" class="space-link" data-space="studio-c">
+                <span data-i18n="cta.space">Réserver cet espace</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
           </article>
 
-          <article class="service-card reveal">
-            <span class="service-number">04 / CONNECT</span>
-
-            <div>
-              <h3>Workshops</h3>
-              <p>
-                Discuss studio space for creative
-                workshops, learning experiences
-                and small group sessions.
-              </p>
+          <article class="space-card reveal" style="--d:.1s">
+            <div class="space-top">
+              <span class="space-letter">D</span>
+              <span class="space-icon"><svg aria-hidden="true"><use href="#i-mirror"/></svg></span>
             </div>
-
-            <span class="service-arrow">↗</span>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-number">05 / GATHER</span>
-
-            <div>
-              <h3>Private Experiences</h3>
-              <p>
-                Ask about intimate celebrations,
-                brand showcases, product launches
-                and private gatherings.
-              </p>
+            <div class="space-body">
+              <span class="space-label" data-i18n="s4.label">Espace loges</span>
+              <h3 data-i18n="s4.name">Les Loges</h3>
+              <p data-i18n="s4.desc">Loges maquillage et coiffure, espace d'attente pour talents et clients, et coin équipe pour préparer chaque tournage dans le confort.</p>
+              <ul class="tags">
+                <li data-i18n="s4.t1">Maquillage</li>
+                <li data-i18n="s4.t2">Costumes</li>
+                <li data-i18n="s4.t3">Accueil clients</li>
+              </ul>
+              <button type="button" class="space-link" data-space="green-room">
+                <span data-i18n="cta.space">Réserver cet espace</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
             </div>
-
-            <span class="service-arrow">↗</span>
-          </article>
-
-          <article class="service-card reveal">
-            <span class="service-number">06 / YOUR VISION</span>
-
-            <div>
-              <h3>Something Else?</h3>
-              <p>
-                Have something different in mind?
-                Share your project and explore
-                the possibilities with us.
-              </p>
-            </div>
-
-            <span class="service-arrow">↗</span>
           </article>
 
         </div>
 
-        <p class="form-note">
-          Studio uses, equipment, guest capacity and
-          booking availability are subject to confirmation.
+        <p class="note reveal" data-i18n="spaces.note">
+          Dimensions, équipements et disponibilités communiqués sur demande. Visites possibles sur rendez-vous.
         </p>
 
       </div>
-
     </section>
 
-    <!-- ABOUT US -->
+    <!-- ================= PRODUCTIONS ================= -->
+    <section class="section productions" id="productions">
+      <div class="container">
 
-    <section class="content-section about" id="about">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow reveal" data-i18n="prod.eyebrow">Ce que l'on tourne ici</div>
+            <h2 class="display section-title reveal" data-i18n-html="prod.title">Pensé pour<br><em>les créateurs.</em></h2>
+          </div>
+          <p class="section-intro reveal" data-i18n="prod.intro">
+            Des productions internationales aux créateurs indépendants,
+            nos espaces s'adaptent à votre format, votre équipe et votre budget.
+          </p>
+        </div>
 
+        <div class="prod-grid">
+          <div class="prod reveal">
+            <svg aria-hidden="true"><use href="#i-film"/></svg>
+            <h3 data-i18n="p1.t">Cinéma & fiction</h3>
+            <p data-i18n="p1.d">Courts et longs métrages, séries et scènes de studio.</p>
+          </div>
+          <div class="prod reveal" style="--d:.06s">
+            <svg aria-hidden="true"><use href="#i-music"/></svg>
+            <h3 data-i18n="p2.t">Clips musicaux</h3>
+            <p data-i18n="p2.d">Rumba, ndombolo, afrobeats, gospel — donnez vie à votre son.</p>
+          </div>
+          <div class="prod reveal" style="--d:.12s">
+            <svg aria-hidden="true"><use href="#i-mega"/></svg>
+            <h3 data-i18n="p3.t">Publicité</h3>
+            <p data-i18n="p3.d">Spots TV, campagnes digitales et films de marque.</p>
+          </div>
+          <div class="prod reveal">
+            <svg aria-hidden="true"><use href="#i-tv"/></svg>
+            <h3 data-i18n="p4.t">Télévision</h3>
+            <p data-i18n="p4.d">Émissions, talk-shows, interviews et reportages.</p>
+          </div>
+          <div class="prod reveal" style="--d:.06s">
+            <svg aria-hidden="true"><use href="#i-photo"/></svg>
+            <h3 data-i18n="p5.t">Photographie</h3>
+            <p data-i18n="p5.d">Portraits, mode, produits et campagnes éditoriales.</p>
+          </div>
+          <div class="prod reveal" style="--d:.12s">
+            <svg aria-hidden="true"><use href="#i-mic"/></svg>
+            <h3 data-i18n="p6.t">Podcasts & digital</h3>
+            <p data-i18n="p6.d">Podcasts vidéo, contenus réseaux sociaux et lives.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section about texture" id="about">
       <div class="container about-grid">
 
-        <div class="reveal">
-
-          <img
-            src="assets/bp-studios-official-logo.png"
-            alt="BP Studios original logo"
-            class="about-logo"
-            loading="lazy"
-          >
-
+        <div class="about-logo-wrap reveal">
+          <img class="about-logo" src="assets/bp-studios-logo-full.png"
+            width="900" height="571" loading="lazy"
+            alt="BP Studios — Studio spaces for hire">
         </div>
 
-        <div class="reveal">
+        <div class="about-copy reveal" style="--d:.1s">
+          <div class="eyebrow" data-i18n="about.eyebrow">Bienvenue chez BP Studios</div>
+          <h2 class="display section-title" data-i18n-html="about.title">Un lieu pour<br><em>créer sans limites.</em></h2>
+          <p data-i18n="about.p1">
+            BP Studios est né d'une conviction simple : le bon environnement
+            rend l'extraordinaire possible.
+          </p>
+          <p data-i18n="about.p2">
+            À Kinshasa, nous créons une maison pour les réalisateurs, photographes,
+            artistes, marques et créateurs de contenu — un lieu professionnel,
+            accueillant et flexible où chaque projet peut prendre forme.
+          </p>
 
-          <div class="eyebrow">
-            WELCOME TO BP STUDIOS
+          <div class="values">
+            <div><strong data-i18n="v1.t">Flexible</strong><span data-i18n="v1.d">À l'heure ou sur plusieurs jours</span></div>
+            <div><strong data-i18n="v2.t">Bilingue</strong><span data-i18n="v2.d">Accueil en français et en anglais</span></div>
+            <div><strong data-i18n="v3.t">Sur mesure</strong><span data-i18n="v3.d">Espaces adaptés à votre projet</span></div>
           </div>
-
-          <h2 class="serif section-title">
-            A space to<br>
-            make your own.
-          </h2>
-
-          <p>
-            BP Studios is built around a simple idea:
-            the right environment can make extraordinary
-            things possible.
-          </p>
-
-          <p>
-            We're creating a destination where
-            individuals, brands and communities
-            can bring their plans to life.
-          </p>
-
-          <p>
-            Our vision is to provide an inspiring,
-            welcoming and flexible studio experience,
-            whether you're creating content, planning
-            a production or bringing people together.
-          </p>
 
           <a href="#contact" class="btn">
-            DISCOVER MORE ↗
+            <span data-i18n="cta.talk">Parlons de votre projet</span>
+            <svg aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
-
         </div>
 
       </div>
-
     </section>
 
-    <!-- BOOKING PROCESS -->
-
-    <section class="content-section process" id="how-it-works">
-
+    <!-- ================= PROCESS ================= -->
+    <section class="section process" id="how-it-works">
       <div class="container">
 
-        <div class="eyebrow reveal">
-          SIMPLE FROM THE START
+        <div class="section-head">
+          <div>
+            <div class="eyebrow reveal" data-i18n="how.eyebrow">Simple dès le départ</div>
+            <h2 class="display section-title reveal" data-i18n-html="how.title">Réserver en<br><em>trois étapes.</em></h2>
+          </div>
+          <p class="section-intro reveal" data-i18n="how.intro">
+            De la première demande au jour du tournage, nous vous accompagnons
+            pour que votre production se déroule sans accroc.
+          </p>
         </div>
-
-        <h2 class="serif section-title reveal">
-          How it works.
-        </h2>
 
         <div class="steps">
-
           <div class="step reveal">
-
             <span class="step-number">01</span>
-
-            <h3>Share Your Idea</h3>
-
-            <p>
-              Tell us what you're planning,
-              your preferred date, approximate
-              group size and requirements.
-            </p>
-
+            <h3 data-i18n="st1.t">Partagez votre projet</h3>
+            <p data-i18n="st1.d">Indiquez le type de production, l'espace souhaité, vos dates, la durée et la taille de votre équipe.</p>
           </div>
-
-          <div class="step reveal">
-
+          <div class="step reveal" style="--d:.1s">
             <span class="step-number">02</span>
-
-            <h3>Discuss the Details</h3>
-
-            <p>
-              We'll review your enquiry,
-              confirm suitability and discuss
-              the available booking options.
-            </p>
-
+            <h3 data-i18n="st2.t">Recevez votre devis</h3>
+            <p data-i18n="st2.d">Nous confirmons la disponibilité, répondons à vos questions et vous envoyons une proposition adaptée.</p>
           </div>
-
-          <div class="step reveal">
-
+          <div class="step reveal" style="--d:.2s">
             <span class="step-number">03</span>
-
-            <h3>Make It Happen</h3>
-
-            <p>
-              Once your booking is confirmed,
-              prepare to bring your project
-              or event to life at BP Studios.
-            </p>
-
+            <h3 data-i18n="st3.t">Tournez</h3>
+            <p data-i18n="st3.d">Votre réservation est confirmée : arrivez, installez-vous et donnez vie à votre vision.</p>
           </div>
-
         </div>
 
       </div>
-
     </section>
 
-    <!-- FAQ -->
+    <!-- ================= FAQ ================= -->
+    <section class="section faq" id="faq">
+      <div class="container faq-grid">
 
-    <section class="content-section faq" id="faq">
-
-      <div class="container">
-
-        <div class="eyebrow reveal">
-          GOOD TO KNOW
+        <div>
+          <div class="eyebrow reveal" data-i18n="faq.eyebrow">Bon à savoir</div>
+          <h2 class="display section-title reveal" data-i18n-html="faq.title">Questions<br><em>fréquentes.</em></h2>
+          <p class="section-intro reveal" style="margin-top:24px" data-i18n="faq.intro">
+            Vous ne trouvez pas votre réponse ? Écrivez-nous, nous répondons rapidement.
+          </p>
         </div>
 
-        <h2 class="serif section-title reveal">
-          Frequently asked<br>
-          questions.
-        </h2>
-
-        <div class="reveal">
-
+        <div class="faq-list reveal">
           <details>
-            <summary>How much does studio hire cost?</summary>
-            <p>
-              Pricing depends on the booking duration
-              and requirements. Contact BP Studios
-              for a tailored quotation.
-            </p>
+            <summary data-i18n="f1.q">Combien coûte la location d'un studio ?</summary>
+            <p data-i18n="f1.a">Le tarif dépend de l'espace, de la durée et de vos besoins (équipement, loges, horaires). Envoyez-nous votre demande pour recevoir un devis personnalisé.</p>
           </details>
-
           <details>
-            <summary>Can I hire the studio for a few hours?</summary>
-            <p>
-              Tell us how long you need the studio,
-              and we'll confirm the available options.
-            </p>
+            <summary data-i18n="f2.q">Puis-je louer un studio pour quelques heures ?</summary>
+            <p data-i18n="f2.a">Oui. Nous proposons des réservations à l'heure, à la demi-journée, à la journée ou sur plusieurs jours selon les disponibilités.</p>
           </details>
-
           <details>
-            <summary>Is photography equipment included?</summary>
-            <p>
-              Please specify any equipment requirements
-              in your enquiry so we can confirm
-              what is available.
-            </p>
+            <summary data-i18n="f3.q">Le matériel (lumière, caméra, son) est-il inclus ?</summary>
+            <p data-i18n="f3.a">Précisez vos besoins en matériel dans votre demande : nous vous confirmerons ce qui est disponible sur place et ce qui peut être organisé.</p>
           </details>
-
           <details>
-            <summary>Can I arrange a studio viewing?</summary>
-            <p>
-              You can request a viewing using our
-              booking enquiry form.
-            </p>
+            <summary data-i18n="f4.q">Puis-je visiter les studios avant de réserver ?</summary>
+            <p data-i18n="f4.a">Bien sûr. Demandez une visite via le formulaire ou WhatsApp et nous fixerons un rendez-vous.</p>
           </details>
-
           <details>
-            <summary>Can I host private events?</summary>
-            <p>
-              Tell us about your event, expected
-              attendance and preferred date.
-              We'll confirm whether the space
-              is suitable.
-            </p>
+            <summary data-i18n="f5.q">Accueillez-vous les productions internationales ?</summary>
+            <p data-i18n="f5.a">Oui. Notre équipe communique en français et en anglais et peut vous aider à organiser votre tournage à Kinshasa.</p>
           </details>
-
+          <details>
+            <summary data-i18n="f6.q">Peut-on organiser un événement privé ?</summary>
+            <p data-i18n="f6.a">Parlez-nous de votre événement, du nombre d'invités et de la date souhaitée ; nous vous dirons si l'espace convient.</p>
+          </details>
         </div>
 
       </div>
-
     </section>
 
-    <!-- CONTACT AND BOOKING -->
-
-    <section class="content-section contact" id="contact">
-
+    <!-- ================= CONTACT ================= -->
+    <section class="section contact texture" id="contact">
       <div class="container contact-grid">
 
-        <div class="contact-text reveal">
-
-          <div class="eyebrow">
-            LET'S CREATE SOMETHING
-          </div>
-
-          <h2 class="serif section-title">
-            Have a date<br>
-            in mind?
-          </h2>
-
-          <p>
-            Whether you're planning a photoshoot,
-            content production, workshop or private
-            experience, we'd love to hear your ideas.
+        <div class="contact-copy reveal">
+          <div class="eyebrow" data-i18n="contact.eyebrow">Créons ensemble</div>
+          <h2 class="display section-title" data-i18n-html="contact.title">Une date<br><em>en tête ?</em></h2>
+          <p data-i18n="contact.p">
+            Clip, publicité, film, shooting ou podcast — parlez-nous de votre
+            projet et nous revenons vers vous avec les disponibilités et un devis.
           </p>
 
-          <p>
-            Send us an enquiry and we'll discuss
-            the next steps.
-          </p>
-
+          <ul class="contact-list">
+            <li>
+              <span class="ic"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+              <div><small data-i18n="contact.loc">Adresse</small><span data-config="address">Kinshasa, République Démocratique du Congo</span></div>
+            </li>
+            <li data-config-row="email">
+              <span class="ic"><svg aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <div><small>E-mail</small><a data-config="emailLink" href="#">—</a></div>
+            </li>
+            <li data-config-row="whatsapp">
+              <span class="ic"><svg aria-hidden="true"><use href="#i-wa"/></svg></span>
+              <div><small>WhatsApp</small><a data-config="waLink" href="#" target="_blank" rel="noopener">—</a></div>
+            </li>
+            <li>
+              <span class="ic"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+              <div><small data-i18n="contact.hoursLabel">Horaires</small><span data-i18n="contact.hours">Lun – Sam · sur rendez-vous (heure de Kinshasa, UTC+1)</span></div>
+            </li>
+          </ul>
         </div>
 
-        <form class="contact-form reveal" id="enquiryForm">
+        <form class="contact-form reveal" id="enquiryForm" novalidate style="--d:.1s">
+          <h3 class="form-title" data-i18n="form.title">Demande de réservation</h3>
 
           <div class="form-row">
-
             <div class="field">
-              <label for="name">Your Name *</label>
-              <input
-                id="name"
-                name="name"
-                required
-                autocomplete="name"
-                placeholder="Full name"
-              >
+              <label for="name" data-i18n="form.name">Nom complet *</label>
+              <input id="name" name="name" required autocomplete="name">
+              <span class="error" data-i18n="form.errRequired">Ce champ est obligatoire.</span>
             </div>
-
             <div class="field">
-              <label for="email">Email Address *</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                autocomplete="email"
-                placeholder="you@example.com"
-              >
+              <label for="email" data-i18n="form.email">E-mail *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="vous@exemple.com" data-i18n-placeholder="form.emailPh">
+              <span class="error" data-i18n="form.errEmail">Veuillez saisir une adresse e-mail valide.</span>
             </div>
-
           </div>
 
           <div class="form-row">
-
             <div class="field">
-
-              <label for="service">
-                What Are You Planning? *
-              </label>
-
-              <select id="service" name="service" required>
-
-                <option value="">Choose a service</option>
-                <option>Photography</option>
-                <option>Video & Filming</option>
-                <option>Content Creation</option>
-                <option>Workshop</option>
-                <option>Private Experience</option>
-                <option>Other</option>
-
+              <label for="phone" data-i18n="form.phone">Téléphone / WhatsApp</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+243 …">
+            </div>
+            <div class="field">
+              <label for="space" data-i18n="form.space">Espace souhaité *</label>
+              <select id="space" name="space" required>
+                <option value="" data-i18n="form.choose">Choisir…</option>
+                <option value="studio-a" data-i18n="opt.a">Studio A — Le Plateau</option>
+                <option value="studio-b" data-i18n="opt.b">Studio B — Le Salon</option>
+                <option value="studio-c" data-i18n="opt.c">Studio C — La Cabine</option>
+                <option value="green-room" data-i18n="opt.d">Les Loges</option>
+                <option value="multiple" data-i18n="opt.multi">Plusieurs espaces</option>
+                <option value="advice" data-i18n="opt.advice">Je ne sais pas encore — conseillez-moi</option>
               </select>
-
+              <span class="error" data-i18n="form.errRequired">Ce champ est obligatoire.</span>
             </div>
+          </div>
 
+          <div class="form-row">
             <div class="field">
-
-              <label for="date">
-                Preferred Date
-              </label>
-
-              <input id="date" name="date" type="date">
-
+              <label for="production" data-i18n="form.production">Type de production *</label>
+              <select id="production" name="production" required>
+                <option value="" data-i18n="form.choose">Choisir…</option>
+                <option data-i18n="pt.1">Clip musical</option>
+                <option data-i18n="pt.2">Publicité</option>
+                <option data-i18n="pt.3">Film / Série</option>
+                <option data-i18n="pt.4">Émission TV / Interview</option>
+                <option data-i18n="pt.5">Photographie</option>
+                <option data-i18n="pt.6">Podcast / Live</option>
+                <option data-i18n="pt.7">Événement privé</option>
+                <option data-i18n="pt.8">Autre</option>
+              </select>
+              <span class="error" data-i18n="form.errRequired">Ce champ est obligatoire.</span>
             </div>
+            <div class="field">
+              <label for="duration" data-i18n="form.duration">Durée</label>
+              <select id="duration" name="duration">
+                <option value="" data-i18n="form.choose">Choisir…</option>
+                <option data-i18n="du.1">Quelques heures</option>
+                <option data-i18n="du.2">Demi-journée</option>
+                <option data-i18n="du.3">Journée complète</option>
+                <option data-i18n="du.4">Plusieurs jours</option>
+              </select>
+            </div>
+          </div>
 
+          <div class="form-row">
+            <div class="field">
+              <label for="date" data-i18n="form.date">Date souhaitée</label>
+              <input id="date" name="date" type="date">
+              <span class="error" data-i18n="form.errDate">Choisissez une date à venir.</span>
+            </div>
+            <div class="field">
+              <label for="crew" data-i18n="form.crew">Taille de l'équipe</label>
+              <input id="crew" name="crew" type="number" min="1" max="500" inputmode="numeric" placeholder="ex. 8" data-i18n-placeholder="form.crewPh">
+            </div>
           </div>
 
           <div class="field">
-
-            <label for="guests">
-              Estimated Number of People
-            </label>
-
-            <input
-              id="guests"
-              name="guests"
-              type="number"
-              min="1"
-              placeholder="e.g. 10"
-            >
-
+            <label for="message" data-i18n="form.message">Votre projet *</label>
+            <textarea id="message" name="message" rows="5" required
+              placeholder="Décrivez votre projet, vos horaires et vos besoins en matériel…"
+              data-i18n-placeholder="form.messagePh"></textarea>
+            <span class="error" data-i18n="form.errRequired">Ce champ est obligatoire.</span>
           </div>
 
-          <div class="field">
-
-            <label for="message">
-              Tell Us About Your Project *
-            </label>
-
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              required
-              placeholder="Tell us about your plans, timings and requirements..."></textarea>
-
+          <div class="form-actions">
+            <button type="submit" class="btn" data-channel="email">
+              <span data-i18n="form.sendEmail">Envoyer par e-mail</span>
+              <svg aria-hidden="true"><use href="#i-mail"/></svg>
+            </button>
+            <button type="submit" class="btn btn-whatsapp" data-channel="whatsapp" id="waSubmit">
+              <span data-i18n="form.sendWa">Envoyer via WhatsApp</span>
+              <svg aria-hidden="true"><use href="#i-wa"/></svg>
+            </button>
           </div>
 
-          <button type="submit" class="btn">
-            PREPARE ENQUIRY ↗
-          </button>
-
-          <p class="form-note" id="formStatus" role="status">
-            This form opens your email application
-            with your enquiry prepared.
-            Your booking is not confirmed until
-            BP Studios responds.
+          <p class="form-status" id="formStatus" role="status" aria-live="polite" data-i18n="form.note">
+            Votre réservation n'est confirmée qu'après réponse de BP Studios.
           </p>
-
         </form>
 
       </div>
-
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="container footer-flex">
-
-      <a href="#home" class="brand">
-        BP<span>STUDIOS</span>
-      </a>
-
-      <small>
-        © <span id="year"></span> BP Studios.
-        All rights reserved.
-      </small>
-
-      <a href="#home">
-        Back to top ↑
-      </a>
-
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" aria-label="BP Studios">
+            <img class="footer-logo" src="assets/bp-studios-logo-full.png" width="900" height="571" loading="lazy" alt="BP Studios — Studio spaces for hire">
+          </a>
+        </div>
+        <div>
+          <h4 data-i18n="footer.explore">Explorer</h4>
+          <ul>
+            <li><a href="#spaces" data-i18n="nav.spaces">Nos espaces</a></li>
+            <li><a href="#productions" data-i18n="nav.productions">Productions</a></li>
+            <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footer.visit">Nous trouver</h4>
+          <ul>
+            <li><span data-i18n="footer.city">Kinshasa, RD Congo</span></li>
+            <li data-config-row="email"><a data-config="emailLink" href="#">—</a></li>
+            <li data-config-row="whatsapp"><a data-config="waLink" href="#" target="_blank" rel="noopener">—</a></li>
+            <li><a href="#contact" data-i18n="cta.enquire">Demander un devis</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> BP Studios. <span data-i18n="footer.rights">Tous droits réservés.</span></span>
+        <a href="#home" data-i18n="footer.top">Retour en haut ↑</a>
+      </div>
     </div>
-
   </footer>
 
-  <!-- INTERACTIVE FEATURES -->
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp BP Studios">
+    <svg aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
 
   <script>
+  (function () {
+    "use strict";
 
-    // REPLACE THIS WITH YOUR BUSINESS EMAIL
-
+    /* =========================================================
+       BUSINESS SETTINGS — edit these before going live.
+       email:    booking inbox, e.g. "bookings@bpstudios.cd"
+       whatsapp: international format, digits only, e.g. "243812345678"
+       Leave a value empty ("") to hide that contact option.
+       ========================================================= */
     const CONFIG = {
-      bookingEmail: "YOUR-EMAIL@example.com"
+      email: "",
+      whatsapp: "",
+      address: "Kinshasa, République Démocratique du Congo"
     };
 
-    // NAVIGATION
+    /* ---------------- TRANSLATIONS (French is in the HTML) ---------------- */
+    const EN = {
+      "skip": "Skip to content",
+      "navLabel": "Main navigation",
+      "scroll": "Scroll down",
+      "nav.spaces": "Our spaces",
+      "nav.productions": "Productions",
+      "nav.about": "About",
+      "nav.how": "Booking",
+      "nav.faq": "FAQ",
+      "nav.contact": "Contact",
+      "cta.enquire": "Request a quote",
+      "cta.book": "Book a studio",
+      "cta.explore": "Explore our spaces",
+      "cta.space": "Book this space",
+      "cta.talk": "Let's talk about your project",
+      "hero.eyebrow": "Film studios · Kinshasa",
+      "hero.title": "Your set.<br><em>Your vision.</em>",
+      "hero.lead": "Studio spaces designed for film, television, music videos, advertising, photography and podcasts — in the heart of Kinshasa.",
+      "hero.meta1": "Kinshasa, DR Congo",
+      "hero.meta2": "Film · TV · Photo · Podcast",
+      "hero.meta3": "Hourly, half-day or full-day hire",
+      "hero.logoAlt": "BP Studios official logo — Studio spaces for hire",
+      "hero.badge": "Stages available",
+      "tk.1": "Film", "tk.2": "TV series", "tk.3": "Music videos", "tk.4": "Commercials",
+      "tk.5": "Photography", "tk.6": "Podcasts", "tk.7": "Interviews", "tk.8": "Digital content",
+      "spaces.eyebrow": "Our spaces",
+      "spaces.title": "A space for<br><em>every production.</em>",
+      "spaces.intro": "BP Studios brings together several spaces you can hire separately or together. Tell us what you're shooting and we'll suggest the ideal set-up.",
+      "s1.label": "Studio A", "s1.name": "The Stage",
+      "s1.desc": "Our main stage with a cyclorama wall for music videos, commercials, drama and fashion shoots that need room and controlled light.",
+      "s1.t1": "Music videos", "s1.t2": "Commercials", "s1.t3": "Drama", "s1.t4": "Fashion",
+      "s2.label": "Studio B", "s2.name": "The Lounge",
+      "s2.desc": "A warm, modular set ready to dress — ideal for talk shows, interviews, interior scenes and branded content.",
+      "s2.t1": "Talk shows", "s2.t2": "Interviews", "s2.t3": "Interior scenes",
+      "s3.label": "Studio C", "s3.name": "The Booth",
+      "s3.desc": "An intimate, acoustically treated space for video podcasts, voice-overs, online shows and two- or three-person conversations.",
+      "s3.t1": "Podcasts", "s3.t2": "Voice-over", "s3.t3": "Live streaming",
+      "s4.label": "Green room", "s4.name": "The Dressing Rooms",
+      "s4.desc": "Hair and make-up stations, a waiting area for talent and clients, and a crew corner to prepare every shoot in comfort.",
+      "s4.t1": "Make-up", "s4.t2": "Wardrobe", "s4.t3": "Client hosting",
+      "spaces.note": "Dimensions, equipment and availability shared on request. Viewings available by appointment.",
+      "prod.eyebrow": "What gets made here",
+      "prod.title": "Built for<br><em>creators.</em>",
+      "prod.intro": "From international productions to independent creators, our spaces adapt to your format, your crew and your budget.",
+      "p1.t": "Film & drama", "p1.d": "Short films, features, series and studio scenes.",
+      "p2.t": "Music videos", "p2.d": "Rumba, ndombolo, afrobeats, gospel — bring your sound to life.",
+      "p3.t": "Advertising", "p3.d": "TV spots, digital campaigns and brand films.",
+      "p4.t": "Television", "p4.d": "Shows, talk shows, interviews and features.",
+      "p5.t": "Photography", "p5.d": "Portraits, fashion, product and editorial campaigns.",
+      "p6.t": "Podcasts & digital", "p6.d": "Video podcasts, social content and live streams.",
+      "about.eyebrow": "Welcome to BP Studios",
+      "about.title": "A place to<br><em>create freely.</em>",
+      "about.p1": "BP Studios was born from a simple belief: the right environment makes extraordinary things possible.",
+      "about.p2": "In Kinshasa, we're building a home for directors, photographers, artists, brands and content creators — a professional, welcoming and flexible place where every project can take shape.",
+      "v1.t": "Flexible", "v1.d": "By the hour or over several days",
+      "v2.t": "Bilingual", "v2.d": "Welcome in French and English",
+      "v3.t": "Tailored", "v3.d": "Spaces adapted to your project",
+      "how.eyebrow": "Simple from the start",
+      "how.title": "Book in<br><em>three steps.</em>",
+      "how.intro": "From your first enquiry to shoot day, we're with you so your production runs smoothly.",
+      "st1.t": "Share your project", "st1.d": "Tell us the type of production, the space you'd like, your dates, duration and crew size.",
+      "st2.t": "Get your quote", "st2.d": "We confirm availability, answer your questions and send you a tailored proposal.",
+      "st3.t": "Shoot", "st3.d": "Your booking is confirmed: arrive, set up and bring your vision to life.",
+      "faq.eyebrow": "Good to know",
+      "faq.title": "Frequently asked<br><em>questions.</em>",
+      "faq.intro": "Can't find your answer? Write to us — we reply quickly.",
+      "f1.q": "How much does studio hire cost?",
+      "f1.a": "Pricing depends on the space, duration and your requirements (equipment, dressing rooms, hours). Send us an enquiry for a tailored quote.",
+      "f2.q": "Can I hire a studio for a few hours?",
+      "f2.a": "Yes. We offer hourly, half-day, full-day and multi-day bookings, subject to availability.",
+      "f3.q": "Is equipment (lighting, camera, sound) included?",
+      "f3.a": "List your equipment needs in your enquiry and we'll confirm what's available on site and what can be arranged.",
+      "f4.q": "Can I visit the studios before booking?",
+      "f4.a": "Of course. Request a viewing through the form or WhatsApp and we'll set up an appointment.",
+      "f5.q": "Do you welcome international productions?",
+      "f5.a": "Yes. Our team works in French and English and can help you organise your shoot in Kinshasa.",
+      "f6.q": "Can I host a private event?",
+      "f6.a": "Tell us about your event, guest numbers and preferred date, and we'll let you know if the space is suitable.",
+      "contact.eyebrow": "Let's create together",
+      "contact.title": "Have a date<br><em>in mind?</em>",
+      "contact.p": "Music video, commercial, film, photoshoot or podcast — tell us about your project and we'll come back with availability and a quote.",
+      "contact.loc": "Address",
+      "contact.hoursLabel": "Hours",
+      "contact.hours": "Mon – Sat · by appointment (Kinshasa time, UTC+1)",
+      "form.title": "Booking enquiry",
+      "form.name": "Full name *",
+      "form.email": "Email *",
+      "form.emailPh": "you@example.com",
+      "form.phone": "Phone / WhatsApp",
+      "form.space": "Preferred space *",
+      "form.choose": "Choose…",
+      "opt.a": "Studio A — The Stage", "opt.b": "Studio B — The Lounge", "opt.c": "Studio C — The Booth",
+      "opt.d": "The Dressing Rooms", "opt.multi": "Several spaces", "opt.advice": "Not sure yet — advise me",
+      "form.production": "Type of production *",
+      "pt.1": "Music video", "pt.2": "Commercial", "pt.3": "Film / Series", "pt.4": "TV show / Interview",
+      "pt.5": "Photography", "pt.6": "Podcast / Live", "pt.7": "Private event", "pt.8": "Other",
+      "form.duration": "Duration",
+      "du.1": "A few hours", "du.2": "Half day", "du.3": "Full day", "du.4": "Several days",
+      "form.date": "Preferred date",
+      "form.crew": "Crew size",
+      "form.crewPh": "e.g. 8",
+      "form.message": "Your project *",
+      "form.messagePh": "Describe your project, timings and equipment needs…",
+      "form.errRequired": "This field is required.",
+      "form.errEmail": "Please enter a valid email address.",
+      "form.errDate": "Please choose a future date.",
+      "form.sendEmail": "Send by email",
+      "form.sendWa": "Send via WhatsApp",
+      "form.note": "Your booking is only confirmed once BP Studios replies.",
+      "footer.explore": "Explore",
+      "footer.visit": "Find us",
+      "footer.city": "Kinshasa, DR Congo",
+      "footer.rights": "All rights reserved.",
+      "footer.top": "Back to top ↑"
+    };
 
+    const MSG = {
+      fr: {
+        fixErrors: "Merci de corriger les champs indiqués.",
+        emailOpen: "Votre application e-mail va s'ouvrir avec votre demande. Envoyez le message pour finaliser.",
+        waOpen: "WhatsApp va s'ouvrir avec votre demande. Envoyez le message pour finaliser.",
+        notConfigured: "Ce moyen de contact n'est pas encore configuré. Merci d'utiliser l'autre option.",
+        noneConfigured: "Les coordonnées de BP Studios seront bientôt disponibles. Merci de réessayer plus tard.",
+        subject: "Demande de réservation BP Studios",
+        fields: ["Nom", "E-mail", "Téléphone", "Espace", "Production", "Durée", "Date", "Équipe", "Projet"],
+        flexible: "Flexible", na: "Non précisé",
+        title: "BP Studios | Studios de tournage à louer à Kinshasa"
+      },
+      en: {
+        fixErrors: "Please correct the highlighted fields.",
+        emailOpen: "Your email app will open with your enquiry. Send the message to complete it.",
+        waOpen: "WhatsApp will open with your enquiry. Send the message to complete it.",
+        notConfigured: "This contact option isn't set up yet. Please use the other option.",
+        noneConfigured: "BP Studios contact details will be available soon. Please try again later.",
+        subject: "BP Studios booking enquiry",
+        fields: ["Name", "Email", "Phone", "Space", "Production", "Duration", "Date", "Crew", "Project"],
+        flexible: "Flexible", na: "Not specified",
+        title: "BP Studios | Film studio spaces for hire in Kinshasa"
+      }
+    };
+
+    /* ---------------- LANGUAGE ---------------- */
+    const FR = {};
+    const store = {
+      get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+    };
+
+    // Capture the French originals from the markup once
+    document.querySelectorAll("[data-i18n]").forEach(el => { FR[el.dataset.i18n] = el.textContent.trim().replace(/\s+/g, " "); });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => { FR[el.dataset.i18nHtml] = el.innerHTML.trim(); });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => { FR[el.dataset.i18nPlaceholder] = el.placeholder; });
+    document.querySelectorAll("[data-i18n-alt]").forEach(el => { FR[el.dataset.i18nAlt] = el.alt; });
+    document.querySelectorAll("[data-i18n-aria]").forEach(el => { FR[el.dataset.i18nAria] = el.getAttribute("aria-label"); });
+
+    let lang = "fr";
+
+    function setLang(next) {
+      lang = next === "en" ? "en" : "fr";
+      const dict = lang === "en" ? EN : FR;
+      const t = key => dict[key] ?? FR[key];
+
+      document.documentElement.lang = lang;
+      document.title = MSG[lang].title;
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+      document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => { el.placeholder = t(el.dataset.i18nPlaceholder); });
+      document.querySelectorAll("[data-i18n-alt]").forEach(el => { el.alt = t(el.dataset.i18nAlt); });
+      document.querySelectorAll("[data-i18n-aria]").forEach(el => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+      document.querySelectorAll(".lang-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+
+      store.set("bp-lang", lang);
+      buildTicker();
+    }
+
+    document.querySelectorAll(".lang-switch button").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    /* ---------------- TICKER (seamless loop) ---------------- */
+    const track = document.getElementById("tickerTrack");
+    const group = document.getElementById("tickerGroup");
+    function buildTicker() {
+      track.querySelectorAll(".ticker-group.clone").forEach(n => n.remove());
+      // Fill at least two screen widths, then duplicate the whole set once for a -50% loop
+      const reps = Math.max(1, Math.ceil((window.innerWidth * 1.2) / Math.max(group.scrollWidth, 1)));
+      const set = [];
+      for (let i = 1; i < reps; i++) set.push(group.cloneNode(true));
+      set.forEach(n => { n.classList.add("clone"); n.removeAttribute("id"); track.appendChild(n); });
+      const half = [group, ...set];
+      half.forEach(n => {
+        const c = n.cloneNode(true);
+        c.classList.add("clone"); c.removeAttribute("id");
+        track.appendChild(c);
+      });
+    }
+
+    /* ---------------- CONTACT DETAILS ---------------- */
+    const waNumber = CONFIG.whatsapp.replace(/\D/g, "");
+    const waPretty = waNumber ? "+" + waNumber.replace(/^(\d{3})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4") : "";
+
+    document.querySelectorAll('[data-config="address"]').forEach(el => { el.textContent = CONFIG.address; });
+    document.querySelectorAll('[data-config="emailLink"]').forEach(el => {
+      el.textContent = CONFIG.email; el.href = "mailto:" + CONFIG.email;
+    });
+    document.querySelectorAll('[data-config="waLink"]').forEach(el => {
+      el.textContent = waPretty; el.href = "https://wa.me/" + waNumber;
+    });
+    document.querySelectorAll('[data-config-row="email"]').forEach(el => { el.hidden = !CONFIG.email; });
+    document.querySelectorAll('[data-config-row="whatsapp"]').forEach(el => { el.hidden = !waNumber; });
+
+    const waFloat = document.getElementById("waFloat");
+    if (waNumber) { waFloat.href = "https://wa.me/" + waNumber; waFloat.classList.add("show"); }
+    if (!waNumber) document.getElementById("waSubmit").hidden = true;
+
+    /* ---------------- HEADER & MENU ---------------- */
     const header = document.getElementById("header");
     const menuButton = document.getElementById("menuButton");
     const navLinks = document.getElementById("navLinks");
 
-    window.addEventListener("scroll", () => {
-      header.classList.toggle("scrolled", window.scrollY > 20);
-    }, { passive: true });
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 30);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
+    function setMenu(open) {
+      navLinks.classList.toggle("open", open);
+      header.classList.toggle("menu-active", open);
+      document.body.classList.toggle("menu-open", open);
+      menuButton.setAttribute("aria-expanded", String(open));
+    }
+    menuButton.addEventListener("click", () => setMenu(!navLinks.classList.contains("open")));
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+    window.matchMedia("(min-width: 961px)").addEventListener("change", e => { if (e.matches) setMenu(false); });
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      menuButton.textContent = isOpen ? "×" : "☰";
+    // Highlight the current section in the nav
+    const navMap = new Map();
+    navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+      if (!a.closest(".mobile-cta")) navMap.set(a.getAttribute("href").slice(1), a);
     });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        navLinks.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.textContent = "☰";
-
-      });
-
-    });
-
-    // FOOTER YEAR
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    // SCROLL ANIMATIONS
-
-    const observer = new IntersectionObserver(entries => {
-
+    const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+        const link = navMap.get(entry.target.id);
+        if (link && entry.isIntersecting) {
+          navMap.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
         }
-
       });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    navMap.forEach((_, id) => { const s = document.getElementById(id); if (s) sectionObserver.observe(s); });
 
-    }, { threshold: 0.08 });
+    /* ---------------- REVEAL ---------------- */
+    if ("IntersectionObserver" in window) {
+      const revealer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add("visible"); revealer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      document.querySelectorAll(".reveal").forEach(el => revealer.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    }
 
-    document.querySelectorAll(".reveal").forEach(element => {
-      observer.observe(element);
+    /* ---------------- FOOTER YEAR ---------------- */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ---------------- SPACE BUTTONS → FORM ---------------- */
+    const form = document.getElementById("enquiryForm");
+    const spaceSelect = document.getElementById("space");
+    document.querySelectorAll("[data-space]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        spaceSelect.value = btn.dataset.space;
+        spaceSelect.closest(".field").classList.remove("invalid");
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => document.getElementById("name").focus({ preventScroll: true }), 700);
+      });
     });
 
-    // BOOKING ENQUIRY
+    /* ---------------- BOOKING FORM ---------------- */
+    const status = document.getElementById("formStatus");
+    const dateInput = document.getElementById("date");
+    const todayISO = () => {
+      const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+      return d.toISOString().slice(0, 10);
+    };
+    dateInput.min = todayISO();
 
-    document.getElementById("enquiryForm")
-      .addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const status = document.getElementById("formStatus");
-
-        if (CONFIG.bookingEmail.includes("YOUR-EMAIL")) {
-
-          status.textContent =
-            "Please configure the BP Studios booking email before launching.";
-
-          return;
-        }
-
-        const data = new FormData(this);
-
-        const name = data.get("name");
-        const email = data.get("email");
-        const service = data.get("service");
-        const date = data.get("date") || "Flexible";
-        const guests = data.get("guests") || "Not specified";
-        const message = data.get("message");
-
-        const subject =
-          "BP Studios Enquiry: " + service + " | " + name;
-
-        const body = [
-          "Name: " + name,
-          "Email: " + email,
-          "Service: " + service,
-          "Preferred Date: " + date,
-          "Estimated Guests: " + guests,
-          "",
-          "Project Details:",
-          message
-        ].join("\n");
-
-        const mailto =
-          "mailto:" + CONFIG.bookingEmail +
-          "?subject=" + encodeURIComponent(subject) +
-          "&body=" + encodeURIComponent(body);
-
-        window.location.href = mailto;
-
-        status.textContent =
-          "Your email application should open. Please send the email to complete your enquiry.";
-
+    function validate() {
+      let ok = true;
+      form.querySelectorAll(".field").forEach(f => f.classList.remove("invalid"));
+      form.querySelectorAll("[required]").forEach(input => {
+        const value = input.value.trim();
+        let valid = value !== "";
+        if (valid && input.type === "email") valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+        if (!valid) { input.closest(".field").classList.add("invalid"); ok = false; }
       });
+      if (dateInput.value && dateInput.value < todayISO()) {
+        dateInput.closest(".field").classList.add("invalid"); ok = false;
+      }
+      return ok;
+    }
 
+    form.querySelectorAll("input, select, textarea").forEach(el => {
+      el.addEventListener("input", () => el.closest(".field")?.classList.remove("invalid"));
+      el.addEventListener("change", () => el.closest(".field")?.classList.remove("invalid"));
+    });
+
+    function setStatus(text, cls) {
+      status.removeAttribute("data-i18n");
+      status.textContent = text;
+      status.className = "form-status" + (cls ? " " + cls : "");
+    }
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const m = MSG[lang];
+      const channel = (e.submitter && e.submitter.dataset.channel) || (CONFIG.email ? "email" : "whatsapp");
+
+      if (!validate()) {
+        setStatus(m.fixErrors, "warn");
+        const first = form.querySelector(".invalid input, .invalid select, .invalid textarea");
+        if (first) first.focus();
+        return;
+      }
+
+      if (!CONFIG.email && !waNumber) { setStatus(m.noneConfigured, "warn"); return; }
+      if (channel === "email" && !CONFIG.email) { setStatus(m.notConfigured, "warn"); return; }
+      if (channel === "whatsapp" && !waNumber) { setStatus(m.notConfigured, "warn"); return; }
+
+      const sel = id => { const s = document.getElementById(id); return s.value ? s.options[s.selectedIndex].text : ""; };
+      const val = id => document.getElementById(id).value.trim();
+      const F = m.fields;
+
+      const lines = [
+        F[0] + ": " + val("name"),
+        F[1] + ": " + val("email"),
+        F[2] + ": " + (val("phone") || m.na),
+        F[3] + ": " + sel("space"),
+        F[4] + ": " + sel("production"),
+        F[5] + ": " + (sel("duration") || m.na),
+        F[6] + ": " + (val("date") || m.flexible),
+        F[7] + ": " + (val("crew") || m.na),
+        "",
+        F[8] + ":",
+        val("message")
+      ];
+      const subject = m.subject + " — " + sel("production") + " | " + val("name");
+
+      if (channel === "whatsapp") {
+        const text = "*" + subject + "*\n\n" + lines.join("\n");
+        window.open("https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+        setStatus(m.waOpen, "success");
+      } else {
+        window.location.href = "mailto:" + CONFIG.email +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(lines.join("\n"));
+        setStatus(m.emailOpen, "success");
+      }
+    });
+
+    /* ---------------- INITIAL LANGUAGE ---------------- */
+    const urlLang = new URLSearchParams(location.search).get("lang");
+    const saved = store.get("bp-lang");
+    const browser = (navigator.language || "fr").toLowerCase().startsWith("fr") ? "fr" : null;
+    setLang(urlLang || saved || browser || "fr");
+
+    let resizeTimer;
+    window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(buildTicker, 200); });
+  })();
   </script>
 
 </body>
