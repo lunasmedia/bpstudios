@@ -2302,9 +2302,9 @@
     });
 
     /* ---------------- SPACES LAYOUT: grid (default) or carousel ---------------- */
-    // Preview the scrollable version with ?spaces=carousel.
-    // To make it the default, change "grid" to "carousel" below.
-    const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "grid";
+    // Carousel is the default. Show the 2x2 grid instead with ?spaces=grid,
+    // or change "carousel" to "grid" below to switch back for everyone.
+    const SPACES_LAYOUT = new URLSearchParams(location.search).get("spaces") || "carousel";
     (function () {
       if (SPACES_LAYOUT !== "carousel") return;
       const section = document.getElementById("spaces");
